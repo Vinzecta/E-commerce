@@ -3,27 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/Style/home.css" rel="stylesheet">
+    <link href="../Style/home.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
     <title>Chocoley - Home</title>
 </head>
 <body>    
-    <script src="/JavaScript/home.js"></script>
+    <script src="../JavaScript/home.js"></script>
 
-    <header id="header">
-        <h1 id="logo">Chocoley</h1>
-        <nav id="navigation">
-            <a href="index.php?page=home">HOME</a>
-            <a href="index.php?page=product_service">PRODUCT/SERVICE</a>
-            <a href="index.php?page=contact">CONTACT</a>
-        </nav>
-        <div id="icon_placer">
-            <img id="user" src="/Images/Header/user.png" alt="user">
-            <img id="search" src="/Images/Header/search.png" alt="search">
-        </div>
-    </header>
+    <?php
+        include "./Components/header.php";
+    ?>
 
     <section id="contact">
         <div id="contact_text">
@@ -33,29 +24,29 @@
             <a id="contact_nav" href="index.php?page=contact">Contact Now</a>
         </div>
         <div id="banner_image">
-            <img id="chocolate" src="/Images/Home/Chocolate.jpg" alt="Chocolate banner">
+            <img id="chocolate" src="../Images/Home/Chocolate.jpg" alt="Chocolate banner">
         </div>
     </section>
 
     <section id="slideshow">
         <div class="left-slideshow">
             <div id="left-slideshow-1" class="left-slideshow-content">
-                <img src="/Images/Home/Chocolate_2.jpg" alt="Chocolate 2" class="chocolate-2">
+                <img src="../Images/Home/Chocolate_2.jpg" alt="Chocolate 2" class="chocolate-2">
                 <p class="slideshow-text">From rich, velvety truffles to artisanal chocolate bars, our handcrafted creations bring indulgence, quality, and joy to every bite. We blend flavor with artistry to create chocolates that reflect your taste and passion for the finest treats.</p>
                 <a class="product_service" href="index.php?page=product_service">View Product/Services</a>
             </div>
             <div id="left-slideshow-2" class="left-slideshow-content">
-                <img src="/Images/Home/Chocolate 3.jpg" alt="Chocolate 3" class="chocolate-2">
+                <img src="../Images/Home/Chocolate 3.jpg" alt="Chocolate 3" class="chocolate-2">
                 <p class="slideshow-text">Elevate your chocolate experience with unique, custom-crafted treats. From decadent pralines to hand-painted bonbons, we create personalized confections that perfectly match your taste and desires.</p>
                 <a class="product_service" href="index.php?page=product_service">View Product/Services</a>
             </div>
             <div id="left-slideshow-3" class="left-slideshow-content">
-                <img src="/Images/Home/Chocolate flavor.jpg" alt="Chocolate flavor" class="chocolate-2">
+                <img src="../Images/Home/Chocolate flavor.jpg" alt="Chocolate flavor" class="chocolate-2">
                 <p class="slideshow-text">Minimalist chocolates celebrate pure flavors, elegant simplicity, and refined craftsmanship. We embrace the “less is more” philosophy, creating delicacies that are both understated and irresistibly indulgent.</p>
                 <a class="product_service" href="index.php?page=product_service">View Product/Services</a>
             </div>
             <div id="left-slideshow-4" class="left-slideshow-content">
-                <img src="/Images/Home/Eat chocolate.jpg" alt="Eat chocolate" class="chocolate-2">
+                <img src="../Images/Home/Eat chocolate.jpg" alt="Eat chocolate" class="chocolate-2">
                 <p class="slideshow-text">For those who crave indulgence, our luxury chocolate collection features the finest ingredients, exquisite craftsmanship, and decadent flavors. We create sophisticated confections that exude elegance and exclusivity.</p>
                 <a class="product_service" href="index.php?page=product_service">View Product/Services</a>
             </div>
@@ -80,22 +71,9 @@
         </div>
     </section>
 
-    <section id="information">
-        <div id="left-information">
-            <h1>Chocoley</h1>
-            <p>vinh.trantrung@hcmut.edu.vn</p>
-            <p>0-123-456-789</p>
-            <div id="social-media">
-                <a href="https://www.facebook.com/tran.vinh.315651/"><img id="facebook" src="/Images/Home/facebook.png" alt="Facebook"></a>
-                <a href="https://www.instagram.com/vinzecta/"><img id="instagram" src="/Images/Home/instagram.png" alt="Instagram"></a>
-            </div>
-        </div>
-        <div id="right-information">
-            <h1>Subscribe to get our updates and offers</h1>
-            <input type="text" placeholder="Write your email address here">
-            <button id="send_email" type="submit">Submit</button>
-        </div>
-    </section>
-    <footer><p>&copy Tran Trung Vinh</p></footer>
+    <?php
+        include "./Components/info.php";
+        include "./Components/footer.php";
+    ?>
 </body>
 </html>

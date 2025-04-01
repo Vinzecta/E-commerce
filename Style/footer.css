@@ -1,0 +1,11 @@
+footer {
+    margin-top: 100px;
+    border-top: solid 1px black;
+    width: 100%;
+    padding: 20px;
+    margin-top: 10%;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}

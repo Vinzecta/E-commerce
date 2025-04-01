@@ -1,0 +1,99 @@
+body {
+    font-family: "Josefin Slab", serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+#credential {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#left-side {
+    width: 40%;
+}
+
+#title {
+    text-align: center;
+    font-size: 100px;
+    font-weight: 100;
+}
+
+#right-side {
+    width: 100%;
+    
+}
+
+#option {
+    width: 60%;
+    display: flex;
+    gap: 20%;
+    justify-content: center;
+    margin: 0 auto;
+    border-bottom: solid 1px black;
+}
+
+#option p {
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.credential-form {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    gap: 20px;
+    margin-top: 20px;
+
+}
+
+label {
+    font-size: 20px;
+}
+
+input {
+    padding: 20px 0 20px 0;
+}
+
+.show-password {
+    display: flex;
+    gap: 10px;
+}
+
+.show-password p {
+    margin: auto 0;
+}
+
+#forgot {
+    text-align: right;
+}
+
+.credential-form a {
+    width: 100%;
+    padding: 20px 0 20px 0;
+    background-color: black;
+    font-size: 25px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+
+#credential {
+    margin-bottom: 10%;
+}
+
+#option p:hover {
+    color: #d3dde7 !important;
+}
+
+#login {
+    color: #d3dde7;
+}
+
+#sign-up {
+    display: none;
+}
