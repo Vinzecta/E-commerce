@@ -22,7 +22,7 @@
                 <p id="login">Log in</p>
                 <p id="signup">Sign up</p>
             </div>
-            <form id="sign-in" class="credential-form" >
+            <form id="sign-in" class="credential-form">
                 <label for="username">Username or E-mail address</label>
                 <input type="text" class="username" placeholder="Enter username / Email address">
                 <label for="password">Password</label>
@@ -49,6 +49,28 @@
                     <p>Show password</p>
                 </div>
                 <a href="index.php?page=home">Sign up</a>
+            </form>
+
+            <form id="forgot-password" class="credential-form">
+                <div id="instruction">
+                    <h2>Forget your password?</h2>
+                    <p>Type your email and new password!</p>
+                </div>
+                <label for="email">Email</label>
+                <input type="text" class="email" placeholder="Enter email">
+                <label for="password">Password</label>
+                <input type="password" class="password" placeholder="Enter password">
+                <label for="retype_password">Re-type password</label>
+                <input type="password" class="re-type-password" placeholder="Re-type password">
+                <div class="show-password">
+                    <input type="checkbox">
+                    <p>Show password</p>
+                </div>
+                <a href="index.php?page=account">Sign up</a>
+                <div id="return-section">
+                    <p>Remember your password?</p>
+                    <p id="login-return">Return to login</p>
+                </div>
             </form>
     </section>
 

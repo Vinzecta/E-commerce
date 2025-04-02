@@ -97,3 +97,47 @@ input {
 #sign-up {
     display: none;
 }
+
+#instruction {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#forgot-password h2 {
+    text-align: center;
+    font-size: 50px;
+    font-weight: 300;
+    margin: 0;
+}
+
+#forgot-password p {
+    font-size: 20px;
+}
+
+#login-return {
+    color: blue;
+}
+
+#login-return:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#return-section {
+    display: flex;
+    gap: 10px;
+}
+
+#forgot {
+    color: blue;
+}
+
+#forgot:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#forgot-password {
+    display: none;
+}
