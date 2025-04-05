@@ -10,14 +10,13 @@
     <title>Chocoley - Account</title>
 </head>
 <body>  
-    <script src="../JavaScript/account.js"></script>
     <?php
         include "./Components/header.php";
     ?>
 
 `   <h1 id="title">Account</h1>
 
-    <section id="profile">
+    <section id="profile" style="display: none">
         <div id="left-profile">
             <div class="list-container" id="my-account">
                 <div class="profile-pic">
@@ -103,11 +102,11 @@
     </section>
 
     <section id="credential">
-            <div id="option" style="display: none">
+            <div id="option">
                 <p id="login">Log in</p>
                 <p id="signup">Sign up</p>
             </div>
-            <form id="sign-in" class="credential-form" style="display: none">
+            <form id="sign-in" class="credential-form">
                 <label for="username">Username or E-mail address</label>
                 <input type="text" class="username" placeholder="Enter username / Email address">
                 <label for="password">Password</label>
@@ -166,5 +165,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/js/bootstrap.min.js" integrity="sha384-Re460s1NeyAhufAM5JwfIGWosokaQ7CH15ti6W5Y4wC/m4eJ5opJ2ivohxVM05Wd" crossorigin="anonymous"></script>
+    <script src="../JavaScript/account.js"></script>
 </body>
 </html>
