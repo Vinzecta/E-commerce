@@ -55,7 +55,7 @@ body, html {
     font-size: 20px;
 }
 
-#social-media {
+#social-media-section {
     width: 40%;
     height: auto;
     display: flex;
@@ -104,7 +104,7 @@ body, html {
     font-weight: 200;
 }
 
-input {
+#contact-form input {
     font-family: "Josefin Slab", serif;
     padding: 20px;
     border-radius: 15px;

@@ -32,7 +32,7 @@
                     <p id="gmail">vinhtran23042004@gmail.com</p>
                 </div>
 
-                <div id="social-media">
+                <div id="social-media-section">
                     <h3>Social Media</h3>
                     <div id="social-image">
                         <img src="../Images/Contact/facebook.png" alt="Facebook">
