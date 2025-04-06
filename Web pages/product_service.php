@@ -1,3 +1,17 @@
+<?php
+    include "../Backend/connect_db.php";
+    $page = isset($_GET['page_number']) && is_numeric($_GET['page_number'])? (int)($_GET['page_number']) : 1;
+    $product_per_page = 12;
+    $offset = ($page - 1) * $product_per_page;
+
+    $order = isset($_GET['order']) && in_array($_GET['order'], array('DESC','ASC')) ? $_GET['order'] : 'ASC';
+    $order_name = isset($_GET['order_name']) && in_array($_GET['order_name'], array('name','price')) ? $_GET['order_name'] : 'name';
+    $order_sql = "$order_name $order";
+
+    $sql = "SELECT p.name, p.description, p.price, p.image, c.name AS category_name FROM products p JOIN categories c ON p.category_id = c.category_id ORDER BY $order_sql LIMIT $product_per_page OFFSET $offset";
+    $result = mysqli_query($conn, $sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,175 +34,69 @@
         include "./Components/search.php";
     ?>
 
+    <section id="sort">
+        <p id="sort-by">Sort by:</p>
+        <p>Name</p>
+        <img id="name-sort" src="../Images/Product_service/sort.png" alt="Alphabet sort">
+        <p>Price</p>
+        <img id="price-sort" src="../Images/Product_service/arrow.png" alt="Price sort">
+    </section>
+
     <section id="product-container">
-        <div class="product">
-            <div class="product-image">
-                <img src="../Images/Contact/white_chocolate.jpg" alt="white-chocolate">
-            </div>
+        <?php
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo '<div class="product">
+                                <div class="product-image">
+                                    <img src="../Images/Products/' .$row['image']. '" alt="white-chocolate">
+                                </div>
+                                <h1 class="product-name">' .$row['name']. '</h1>
+                                <p class="description">'.$row['description']. '</p>
+                                <p class="category"><b>Category:</b> ' .$row['category_name'].'</p>
+                                <div class="product-price">
+                                    <h2 class="price">' .$row['price']. ' USD</h2>
+                                    <a href="index.php?page=product_detail">View</a>
+                                </div>
+                            </div>';
+                }
+            }
+        ?>
+    </section>
 
-            <h1 class="product-name">White Chocolate</h1>
+    <section id="pagination">
+        <?php if ($page > 1): ?>
+            <a href="index.php?page=product_service&page_number=<?php echo $page - 1 ?>&order_name=<?php echo $order_name ?>&order=<?php echo $order ?>"><img src="../Images/Product_service/left_arrow.png" alt="left-arrow"></a>
+        <?php else: ?>
+            <a href="index.php?page=product_service&page_number=<?php echo $page ?>&order_name=<?php echo $order_name ?>&order=<?php echo $order ?>"><img src="../Images/Product_service/left_arrow.png" alt="left-arrow"></a>
+        <?php endif; ?>
 
-            <p class="description">Description: ssifdisjfoifajfiojfiofj</p>
+        <div class="pagination-list">
+            <?php
+                $total_query = 'SELECT COUNT(id) AS num_rows FROM products';
+                $total_query_result = mysqli_query($conn, $total_query);
+                $total_row = mysqli_fetch_assoc($total_query_result);
+                $total_row = $total_row['num_rows'];
+                $total_page = ceil($total_row / $product_per_page);
+                if ($total_page > 6) {
+                    for ($x = $page; $x <= $page + 3; $x++) {
+                        echo '<a class="pagination-number" href="index.php?page=product_service&page_number=' .$x. '&order_name='.$order_name.'&order='.$order.'"><p>'.$x.'</p></a>';
+                    }
+                    echo '<p class="dots">...</p>';
+                    for ($y = $total_page - 3; $y <= $total_page; $y++) {
+                        echo '<a class="pagination-number" href="index.php?page=product_service&page_number=' .$y. '&order_name='.$order_name.'&order='.$order.'"><p>'.$y.'</p></a>';
+                    }
+                }
 
-            <div class="product-price">
-                <h2 class="price">123456 USD</h2>
-                <a href="index.php?page=product_detail">View</a>
-            </div>
+                for ($i = 1; $i <= $total_page; $i++) {
+                    echo '<a class="pagination-number" href="index.php?page=product_service&page_number=' .$i. '&order_name='.$order_name.'&order='.$order.'"><p>'.$i.'</p></a>';
+                }
+            ?>
         </div>
-
-        <div class="product">
-            <div class="product-image">
-                <img src="../Images/Contact/white_chocolate.jpg" alt="white-chocolate">
-            </div>
-            <h1 class="product-name">White Chocolate</h1>
-
-            <p class="description">Description: ssifdisjfoifajfiojfiofj</p>
-
-            <div class="product-price">
-                <h2 class="price">123456 USD</h2>
-                <a href="index.php?page=product_detail">View</a>
-            </div>
-        </div>
-
-        <div class="product">
-            <div class="product-image">
-                <img src="../Images/Contact/white_chocolate.jpg" alt="white-chocolate">
-            </div>
-            <h1 class="product-name">White Chocolate</h1>
-
-            <p class="description">Description: ssifdisjfoifajfiojfiofj</p>
-
-            <div class="product-price">
-                <h2 class="price">123456 USD</h2>
-                <a href="index.php?page=product_detail">View</a>
-            </div>
-        </div>
-
-        <div class="product">
-            <div class="product-image">
-                <img src="../Images/Contact/white_chocolate.jpg" alt="white-chocolate">
-            </div>
-            <h1 class="product-name">White Chocolate</h1>
-
-            <p class="description">Description: ssifdisjfoifajfiojfiofj</p>
-
-            <div class="product-price">
-                <h2 class="price">123456 USD</h2>
-                <a href="index.php?page=product_detail">View</a>
-            </div>
-        </div>
-
-        <div class="product">
-            <div class="product-image">
-                <img src="../Images/Contact/white_chocolate.jpg" alt="white-chocolate">
-            </div>
-            <h1 class="product-name">White Chocolate</h1>
-
-            <p class="description">Description: ssifdisjfoifajfiojfiofj</p>
-
-            <div class="product-price">
-                <h2 class="price">123456 USD</h2>
-                <a href="index.php?page=product_detail">View</a>
-            </div>
-        </div>
-
-        <div class="product">
-            <div class="product-image">
-                <img src="../Images/Contact/white_chocolate.jpg" alt="white-chocolate">
-            </div>
-            <h1 class="product-name">White Chocolate</h1>
-
-            <p class="description">Description: ssifdisjfoifajfiojfiofj</p>
-
-            <div class="product-price">
-                <h2 class="price">123456 USD</h2>
-                <a href="index.php?page=product_detail">View</a>
-            </div>
-        </div>
-
-        <div class="product">
-            <div class="product-image">
-                <img src="../Images/Contact/white_chocolate.jpg" alt="white-chocolate">
-            </div>
-            <h1 class="product-name">White Chocolate</h1>
-
-            <p class="description">Description: ssifdisjfoifajfiojfiofj</p>
-
-            <div class="product-price">
-                <h2 class="price">123456 USD</h2>
-                <a href="index.php?page=product_detail">View</a>
-            </div>
-        </div>
-
-        <div class="product">
-            <div class="product-image">
-                <img src="../Images/Contact/white_chocolate.jpg" alt="white-chocolate">
-            </div>
-            <h1 class="product-name">White Chocolate</h1>
-
-            <p class="description">Description: ssifdisjfoifajfiojfiofj</p>
-
-            <div class="product-price">
-                <h2 class="price">123456 USD</h2>
-                <a href="index.php?page=product_detail">View</a>
-            </div>
-        </div>
-
-        <div class="product">
-            <div class="product-image">
-                <img src="../Images/Contact/white_chocolate.jpg" alt="white-chocolate">
-            </div>
-            <h1 class="product-name">White Chocolate</h1>
-
-            <p class="description">Description: ssifdisjfoifajfiojfiofj</p>
-
-            <div class="product-price">
-                <h2 class="price">123456 USD</h2>
-                <a href="index.php?page=product_detail">View</a>
-            </div>
-        </div>
-
-        <div class="product">
-            <div class="product-image">
-                <img src="../Images/Contact/white_chocolate.jpg" alt="white-chocolate">
-            </div>
-            <h1 class="product-name">White Chocolate</h1>
-
-            <p class="description">Description: ssifdisjfoifajfiojfiofj</p>
-
-            <div class="product-price">
-                <h2 class="price">123456 USD</h2>
-                <a href="index.php?page=product_detail">View</a>
-            </div>
-        </div>
-
-        <div class="product">
-            <div class="product-image">
-                <img src="../Images/Contact/white_chocolate.jpg" alt="white-chocolate">
-            </div>
-            <h1 class="product-name">White Chocolate</h1>
-
-            <p class="description">Description: ssifdisjfoifajfiojfiofj</p>
-
-            <div class="product-price">
-                <h2 class="price">123456 USD</h2>
-                <a href="index.php?page=product_detail">View</a>
-            </div>
-        </div>
-
-        <div class="product">
-            <div class="product-image">
-                <img src="../Images/Contact/white_chocolate.jpg" alt="white-chocolate">
-            </div>
-            <h1 class="product-name">White Chocolate</h1>
-
-            <p class="description">Description: ssifdisjfoifajfiojfiofj</p>
-
-            <div class="product-price">
-                <h2 class="price">123456 USD</h2>
-                <a href="index.php?page=product_detail">View</a>
-            </div>
-        </div>
+        <?php if ($page < $total_page): ?>
+            <a href="index.php?page=product_service&page_number=<?php echo $page + 1 ?>&order_name=<?php echo $order_name ?>&order=<?php echo $order ?>"><img src="../Images/Product_service/right_arrow.png" alt="right-arrow"></a>
+        <?php else: ?>
+            <a href="index.php?page=product_service&page_number=<?php echo $page?>&order_name=<?php echo $order_name ?>&order=<?php echo $order ?>"><img src="../Images/Product_service/right_arrow.png" alt="right-arrow"></a>
+        <?php endif; ?>
     </section>
 
     <?php
@@ -198,5 +106,10 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/js/bootstrap.min.js" integrity="sha384-Re460s1NeyAhufAM5JwfIGWosokaQ7CH15ti6W5Y4wC/m4eJ5opJ2ivohxVM05Wd" crossorigin="anonymous"></script>
+    <script type="text/javaScript" src="../JavaScript/product_service.js"></script>
 </body>
 </html>
+
+<?php
+    mysqli_close($conn);
+?>
