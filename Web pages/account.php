@@ -92,9 +92,14 @@
                 </div>
                 <form id="reset-pass">
                     <label>New password</label>
-                    <input type="text" placeholder="Enter new password">
+                    <input type="text" class="password" placeholder="Enter new password">
                     <label>Re-type password</label>
-                    <input type="text" placeholder="Re-type password">
+                    <input type="text" class="password" placeholder="Re-type password">
+                    <div class="show-password">
+                        <input type="checkbox">
+                        <p>Show password</p>
+                    </div>
+
                     <button class="change-profile" type="submit">Save changes</button>
                 </form>
             </div>
@@ -109,8 +114,18 @@
             <form id="sign-in" class="credential-form">
                 <label for="username">Username or E-mail address</label>
                 <input type="text" class="username" placeholder="Enter username / Email address">
+
+                <div class="alert" style="display: none">
+                    <p>This field is required!</p>
+                </div>
+
                 <label for="password">Password</label>
                 <input type="password" class="password" placeholder="Enter password">
+
+                <div class="alert" style="display: none">
+                    <p>This field is required!</p>
+                </div>
+
                 <div class="show-password">
                     <input type="checkbox">
                     <p>Show password</p>
@@ -122,12 +137,40 @@
             <form id="sign-up" class="credential-form" style="display: none">
                 <label for="username">Username</label>
                 <input type="text" class="username" placeholder="Enter username">
+
+                <div class="alert" style="display: none">
+                    <p>This field is required!</p>
+                </div>
+
                 <label for="email">Email</label>
-                <input type="text" class="email"placeholder="Enter email">
+                <input type="text" class="email" placeholder="Enter email">
+
+                <div class="alert" style="display: none">
+                    <p>This field is required!</p>
+                </div>
+
+                <div class="alert" style="display: none">
+                    <p>Please enter a valid email address</p>
+                </div>
+
                 <label for="password">Password</label>
                 <input type="password" class="password" placeholder="Enter password">
+
+                <div class="alert" style="display: none">
+                    <p>This field is required!</p>
+                </div>
+
                 <label for="retype_password">Re-type password</label>
-                <input type="password" class="re-type-password" placeholder="Re-type password">
+                <input type="password" class="password" placeholder="Re-type password">
+
+                <div class="alert" style="display: none">
+                    <p>This field is required!</p>
+                </div>
+
+                <div class="alert" style="display: none">
+                    <p>Password does not match!</p>
+                </div>
+
                 <div class="show-password">
                     <input type="checkbox">
                     <p>Show password</p>
@@ -145,7 +188,7 @@
                 <label for="password">Password</label>
                 <input type="password" class="password" placeholder="Enter password">
                 <label for="retype_password">Re-type password</label>
-                <input type="password" class="re-type-password" placeholder="Re-type password">
+                <input type="password" class="password" placeholder="Re-type password">
                 <div class="show-password">
                     <input type="checkbox">
                     <p>Show password</p>

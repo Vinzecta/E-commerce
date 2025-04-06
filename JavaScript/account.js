@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const signupform = document.getElementById("sign-up");
     const show_pass = document.getElementsByClassName("show-password");
     const password = document.getElementsByClassName("password");
-    const repassword = document.getElementsByClassName("re-type-password");
     const login_return = document.getElementById("login-return");
     const option = document.getElementById("option");
     const forgot = document.getElementById("forgot-password");
@@ -18,6 +17,10 @@ document.addEventListener("DOMContentLoaded", function() {
     const reset_password = document.getElementById("reset-password");
     const hover_list = document.querySelectorAll(".list-container");
     const right_content = document.querySelectorAll(".right-content");
+    const alert = document.querySelectorAll(".alert");
+    const username = document.querySelectorAll(".username");
+    const email = document.querySelectorAll(".email");
+    const email_regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     function reset_input(input) {
         for (let i = 0; i < input.length; i++) {
@@ -44,28 +47,38 @@ document.addEventListener("DOMContentLoaded", function() {
     show_pass[0].addEventListener("click", function() {
         if (password[0].type === "password") {
             password[0].type = "text";
+            password[1].type = "text";
         } else {
             password[0].type = "password";
+            password[1].type = "password";
         }
     });
 
     show_pass[1].addEventListener("click", function() {
-        if (password[1].type === "password") {
-            password[1].type = "text";
-            repassword[0].type = "text";
+        if (password[2].type === "password") {
+            password[2].type = "text";
         } else {
-            password[1].type = "password";
-            repassword[0].type = "password";
+            password[2].type = "password";
         }
     });
 
     show_pass[2].addEventListener("click", function() {
-        if (password[2].type === "password") {
-            password[2].type = "text";
-            repassword[1].type = "text";
+        if (password[3].type === "password") {
+            password[3].type = "text";
+            password[4].type = "text";
         } else {
-            password[2].type = "password";
-            repassword[1].type = "password";
+            password[3].type = "password";
+            password[4].type = "password";
+        }
+    });
+
+    show_pass[3].addEventListener("click", function() {
+        if (password[5].type === "password") {
+            password[6].type = "text";
+            password[5].type = "text";
+        } else {
+            password[5].type = "password";
+            password[6].type = "password";
         }
     });
 
@@ -143,4 +156,70 @@ document.addEventListener("DOMContentLoaded", function() {
         right_content[a].style.display = "flex";
         hover_list[a].style.backgroundColor = "#f2f2f2";
     });
+
+    username[0].addEventListener("input", function() {
+        if (username[0].value.length === 0) {
+            alert[0].style.display = "block";
+        } else {
+            alert[0].style.display = "none";
+        }
+    });
+
+    password[2].addEventListener("input", function() {
+        if (password[2].value.length === 0) {
+            alert[1].style.display = "block";
+        } else {
+            alert[1].style.display = "none";
+        }
+    });
+
+    username[1].addEventListener("input", function() {
+        if (username[1].value.length === 0) {
+            alert[2].style.display = "block";
+        } else {
+            alert[2].style.display = "none";
+        }
+    });
+
+    email[0].addEventListener("input", function() {
+        if (!email_regex.test(email[0].value)) {
+            alert[4].style.display = "block";
+        } else {
+            alert[4].style.display = "none";
+        }
+        if (email[0].value.length === 0) {
+            alert[3].style.display = "block";
+            if (alert[4].style.display === "block") {
+                alert[4].style.display = "none";
+            }
+        } else {
+            alert[3].style.display = "none";
+        }
+    });
+
+    password[3].addEventListener("input", function() {
+        if (password[3].value.length === 0) {
+            alert[5].style.display = "block";
+        } else {
+            alert[5].style.display = "none";
+        }
+    });
+
+    password[4].addEventListener("input", function() {
+        if (password[4].value.length === 0) {
+            if (alert[7].style.display === "block") {
+                alert[7].style.display = "none";
+            }
+            alert[6].style.display = "block";
+        } else {
+            alert[6].style.display = "none";
+        }
+
+        if (password[4].value != password[3].value) {
+
+            alert[7].style.display = "block";
+        } else {
+            alert[7].style.display = "none";
+        }
+    })
 });
