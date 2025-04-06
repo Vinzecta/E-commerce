@@ -106,7 +106,42 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/js/bootstrap.min.js" integrity="sha384-Re460s1NeyAhufAM5JwfIGWosokaQ7CH15ti6W5Y4wC/m4eJ5opJ2ivohxVM05Wd" crossorigin="anonymous"></script>
-    <script type="text/javaScript" src="../JavaScript/product_service.js"></script>
+
+    <script type="text/javaScript">
+        document.addEventListener("DOMContentLoaded", function() {
+            const name = document.getElementById("name-sort");
+            const price = document.getElementById("price-sort");
+            let page_number = '<?php echo $page ?>';
+
+            name.addEventListener("click", function() {
+                let clickcount = 0;
+                if (window.location.search.includes("order_name=name&order=DESC")) {
+                    clickcount = 1;
+                }
+                if (clickcount % 2 != 0) {
+                    window.location.href = `index.php?page=product_service&page_number=${page_number}&order_name=name&order=ASC`;
+                    clickcount++;
+                } else {
+                    window.location.href = `index.php?page=product_service&page_number=${page_number}&order_name=name&order=DESC`;
+                    clickcount++;
+                }
+            });
+
+            price.addEventListener("click", function() {
+                let clickcount = 0;
+                if (window.location.search.includes("order_name=price&order=DESC")) {
+                    clickcount = 1;
+                }
+                if (clickcount % 2 != 0) {
+                    window.location.href = `index.php?page=product_service&page_number=${page_number}&order_name=price&order=ASC`;
+                    clickcount++;
+                } else {
+                    window.location.href = `index.php?page=product_service&page_number=${page_number}&order_name=price&order=DESC`;
+                    clickcount++;
+                }
+            })
+        });
+    </script>
 </body>
 </html>
 
