@@ -10,7 +10,7 @@
         $email = mysqli_real_escape_string($conn, $_POST['email']);
         $password = mysqli_real_escape_string($conn, $_POST['password']);
 
-        $user_name_sql = "SELECT user_name, email, password  FROM users WHERE email = '$email'";
+        $user_name_sql = "SELECT user_id, user_name, email, password , profile_image FROM users WHERE email = '$email'";
         $result = mysqli_query($conn, $user_name_sql);
 
         if (mysqli_num_rows($result) > 0) {
@@ -18,6 +18,8 @@
             if (password_verify($password, $account['password'])) {
                 $_SESSION['username'] = $account['user_name'];
                 $_SESSION['email'] = $account['email'];
+                $_SESSION['user_id'] = $account['user_id'];
+                $_SESSION['image'] = $account['profile_image'];
                 header('location: ../Web pages/index.php?page=home');
                 exit();
             } else {

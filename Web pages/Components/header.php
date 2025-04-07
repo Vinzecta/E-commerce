@@ -1,3 +1,16 @@
+<?php
+    include "../Backend/connect_db.php";
+    session_start();
+    $image_link = "../Images/Header/user.png";
+    if (isset($_SESSION['email'])) {
+        $user_id = $_SESSION['user_id'];
+        if (isset($_SESSION['image'])) {
+            $image = $_SESSION['image'];
+            $image_link = "../Images/User/" . $user_id . "/" . $image;
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,8 +27,7 @@
             <a href="index.php?page=contact">CONTACT</a>
         </nav>
         <div id="icon_placer">
-            <a href="index.php?page=account"><img id="user" src="../Images/Header/user.png" alt="user"></a>
-            <img id="search" src="../Images/Header/search.png" alt="search">
+            <a href="index.php?page=account"><img id="user" src="<?php echo $image_link ?>" alt="user"></a>
         </div>
     </header>
 </body>

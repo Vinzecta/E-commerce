@@ -1,8 +1,3 @@
-function preload_image(im_url) {
-    let img = new Image();
-    img.src = im_url;
-  }
-
 document.addEventListener("DOMContentLoaded", function() {
     const left_slideshow = document.querySelectorAll(".slideshow-title");
     const slideshow = document.getElementsByClassName("left-slideshow-content");

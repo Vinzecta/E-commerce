@@ -33,10 +33,20 @@
                                profile_image = '$new_name'
                             WHERE email = '$email'";
                 mysqli_query($conn, $update);
+                $_SESSION['image'] = $new_name;
                 header("location: ../Web pages/index.php?page=account");
                 exit;
-            } else {echo "OK";}
-        } else echo "OK";
+            }
+        } else {
+            $update = "UPDATE users
+                           SET phone_number = '$phone_number',
+                               gender = '$gender',
+                               birth_date = '$birth_date'
+                            WHERE email = '$email'";
+            mysqli_query($conn, $update);
+            header("location: ../Web pages/index.php?page=account");
+            exit;
+        }
     }
 
     mysqli_close($conn);

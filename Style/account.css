@@ -35,7 +35,7 @@ body {
     padding-bottom: 20px;
 }
 
-#option p {
+#option a {
     font-size: 30px;
     cursor: pointer;
     text-decoration: none;
@@ -91,16 +91,12 @@ label {
     margin-bottom: 10%;
 }
 
-#option p:hover {
+#option a:hover {
     color: #d3dde7 !important;
 }
 
 #login {
     color: #d3dde7;
-}
-
-#sign-up {
-    display: none;
 }
 
 #instruction {
@@ -116,12 +112,14 @@ label {
     margin: 0;
 }
 
-#forgot-password p {
+#forgot-password a {
     font-size: 20px;
 }
 
 #login-return {
     color: blue;
+    height: fit-content;
+    margin: auto 0;
 }
 
 #login-return:hover {
@@ -141,10 +139,6 @@ label {
 #forgot:hover {
     text-decoration: underline;
     cursor: pointer;
-}
-
-#forgot-password {
-    display: none;
 }
 
 #profile {
@@ -192,9 +186,11 @@ label {
     object-fit: cover;
 }
 
-.list-container p {
+.list-container a {
     font-size: 20px;
     margin: auto 0;
+    text-decoration: none;
+    color: black;
 }
 
 #right-account {
@@ -283,10 +279,6 @@ table {
     font-weight: bold;
 }
 
-#my-account {
-    background-color: #f2f2f2;
-}
-
 .alert p {
     padding: 15px;
     font-size: 15px;
@@ -306,6 +298,20 @@ select {
 
 #profile input {
     padding: 20px;
+}
+
+#log-out {
+    width: 100%;
+}
+
+#log-out-button {
+    width: 100%;
+    background-color: red;
+    border: none;
+}
+
+#profile input {
+    font-family: "Josefin Slab", serif;
 }
 
 
