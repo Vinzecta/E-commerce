@@ -21,10 +21,16 @@
                 header('location: ../Web pages/index.php?page=home');
                 exit();
             } else {
-                echo '<div class="alert">
+                $_SESSION['error'] = '<div class="alert">
                         <p>Username or password are incorrect! Please try again!</p>
                       </div>';
             }
+        } else {
+            $_SESSION['error'] = '<div class="alert">
+                        <p>Username or password are incorrect! Please try again!</p>
+                      </div>';
         }
     };
+
+    mysqli_close($conn);
 ?>

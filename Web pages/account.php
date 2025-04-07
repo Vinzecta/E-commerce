@@ -1,3 +1,6 @@
+<?php
+    include "../Backend/connect_db.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +19,14 @@
 
 `   <h1 id="title">Account</h1>
 
-    <?php session_start(); if (isset($_SESSION['username'])): ?>
+    <?php session_start(); if (isset($_SESSION['email'])): ?>
+        <?php
+            $email = $_SESSION['email'];
+            $sql = "SELECT * FROM users WHERE email = '$email'";
+            $result = mysqli_query($conn, $sql);
+            $profile = mysqli_fetch_assoc($result);
+        ?>
+
         <section id="profile">
             <div id="left-profile">
                 <div class="list-container" id="my-account">
@@ -46,31 +56,30 @@
                     <div id="right-account-title">
                         <h1>My account</h1>
                     </div>
-                    <form id="edit-profile">
+                    <form id="edit-profile" action="../Backend/edit_profile.php" method="post" enctype="multipart/form-data">
                         <div id="image-edit">
                             <img id="user-image" src="../Images/Account/user.png" alt="user">
-                            <input id="file-upload" type="file" accept=".jpg,.png">
+                            <input id="file-upload" name="image" type="file" accept=".jpg,.png">
                         </div>
                         <label>Username</label>
-                        <input type="text" value="Vinzecta" disabled readonly>
+                        <input type="text" value=<?php echo $profile['user_name'] ?> disabled readonly>
                         <p style="text-align: center; padding: 0">You cannot change the username</p>
-                        <label>Name</label>
-                        <input type="text" placeholder="Enter name">
                         <label>Email</label>
-                        <input type="text" value="lmao@gmail.com">
+                        <input type="text" value=<?php echo $profile['email'] ?> disabled readonly>
+                        <p style="text-align: center; padding: 0">You cannot change the username</p>
                         <label>Phone number</label>
-                        <input type="text" placeholder="Enter phone number">
+                        <input type="text" name="phone_number" placeholder="Enter phone number">
                         <label>Gender</label>
                         <div id="gender">
-                            <input type="radio">
+                            <input type="radio" name="gender" value="male">
                             <label>Male</label>
-                            <input type="radio">
+                            <input type="radio" name="gender" value="female">
                             <label>Female</label>
-                            <input type="radio">
+                            <input type="radio" name="gender" value="other">
                             <label>Other</label>
                         </div>
                         <label>Date of birth</label>
-                        <input type="date">
+                        <input type="date" name="birthdate">
                         <button class="change-profile" type="submit">Save changes</button>
                     </form>
                 </div>
@@ -91,11 +100,11 @@
                     <div id="right-reset-title">
                         <h1>Reset password</h1>
                     </div>
-                    <form id="reset-pass">
+                    <form id="reset-pass" method="post" action="../Backend/reset_pass.php">
                         <label>New password</label>
-                        <input type="text" class="password" placeholder="Enter new password">
+                        <input type="password" class="password" name="password" placeholder="Enter new password">
                         <label>Re-type password</label>
-                        <input type="text" class="password" placeholder="Re-type password">
+                        <input type="password" class="password" placeholder="Re-type password">
                         <div class="show-password">
                             <input type="checkbox" class="pass-show" value="yes">
                             <p>Show password</p>
@@ -135,7 +144,13 @@
                     <button type="submit">Sign in</button>
                 </form>
 
-                <form id="sign-up" action="../Backend/log_in.php" method="post" class="credential-form" style="display: none">
+                <form id="sign-up" action="../Backend/sign_up.php" method="post" class="credential-form" style="display: none">
+                    <?php
+                        if (isset($_SESSION['error'])) {
+                            echo $_SESSION['error'];
+                            unset($_SESSION['error']);
+                        }
+                    ?>
                     <label for="username">Username</label>
                     <input type="text" name="username" class="username" placeholder="Enter username">
 
@@ -186,7 +201,7 @@
                     <button type="submit">Sign up</button>
                 </form>
 
-                <form id="forgot-password" class="credential-form" style="display: none">
+                <form id="forgot-password" class="credential-form" action="../Backend/forgot_password.php" method="post" style="display: none">
                     <div id="instruction">
                         <h2>Forget your password?</h2>
                         <p>Type your email and new password!</p>
@@ -218,5 +233,10 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/js/bootstrap.min.js" integrity="sha384-Re460s1NeyAhufAM5JwfIGWosokaQ7CH15ti6W5Y4wC/m4eJ5opJ2ivohxVM05Wd" crossorigin="anonymous"></script>
     <script src="../JavaScript/account.js"></script>
+    <script src="../JavaScript/profile.js"></script>
+
+    <?php
+        mysqli_close($conn);
+    ?>
 </body>
 </html>

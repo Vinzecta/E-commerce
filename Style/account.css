@@ -304,4 +304,8 @@ select {
     font-family: "Josefin Slab", serif;
 }
 
+#profile input {
+    padding: 20px;
+}
+
 
