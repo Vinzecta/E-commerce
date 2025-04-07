@@ -32,11 +32,14 @@ body {
     justify-content: center;
     margin: 0 auto;
     border-bottom: solid 1px black;
+    padding-bottom: 20px;
 }
 
 #option p {
     font-size: 30px;
     cursor: pointer;
+    text-decoration: none;
+    color: black;
 }
 
 .credential-form {
@@ -69,9 +72,10 @@ label {
 
 #forgot {
     text-align: right;
+    text-decoration: none;
 }
 
-.credential-form a {
+.credential-form button {
     width: 100%;
     padding: 20px 0 20px 0;
     background-color: black;
@@ -80,6 +84,7 @@ label {
     color: white;
     text-align: center;
     text-decoration: none;
+    font-family: "Josefin Slab", serif;
 }
 
 #credential {
@@ -292,6 +297,11 @@ table {
 .alert {
     background-color: #f8d7da ;
     border-radius: 15px;
+}
+
+select {
+    padding: 20px;
+    font-family: "Josefin Slab", serif;
 }
 
 
