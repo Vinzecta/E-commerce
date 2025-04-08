@@ -1,3 +1,14 @@
+<?php
+    if (isset($_SESSION['email'])) {
+        if (isset($_SESSION['role'])) {
+            if ($_SESSION['role'] == 'seller') {
+                header("Location: ../Web pages/index.php?seller=home");
+                exit();
+            }
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -17,13 +17,14 @@
             $password = password_hash($password, PASSWORD_DEFAULT);
             $insert = "INSERT INTO users (email, password, user_name, role) VALUES ('$email', '$password', '$username', '$role')";
             mysqli_query($conn, $insert);
-            header("location: ../Web pages/index.php?page=account");
-            exit;
+            header("location: ../Web pages/index.php?user=account");
+            exit();
         } else {
-            header("location: ../Web pages/index.php?page=account");
-            $_SESSION['error'] = '<div class="alert">
-                                    <p>Email already used! Please try again!</p>
-                                  </div>';
+            $_SESSION['error_signup'] = '<div class="alert">
+                                            <p>Email already used! Please try again!</p>
+                                        </div>';
+            header("Location: ../Web pages/index.php?user=account&form=sign_up");
+            exit();
         }
     }
     mysqli_close($conn);

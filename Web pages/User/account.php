@@ -24,6 +24,15 @@
 
     <?php if (isset($_SESSION['email'])): ?>
         <?php
+            if (isset($_SESSION['role'])) {
+                if ($_SESSION['role'] == 'seller') {
+                    header("Location: ../Web pages/index.php?seller=home");
+                    exit();
+                }
+            }
+        ?>
+        
+        <?php
             $email = $_SESSION['email'];
             $sql = "SELECT * FROM users WHERE email = '$email'";
             $result = mysqli_query($conn, $sql);
@@ -36,21 +45,21 @@
                     <div class="profile-pic">
                         <img src="../Images/Header/user.png">
                     </div>
-                    <a href="index.php?page=account&account_display=profile">My Profile</a>
+                    <a href="index.php?user=account&account_display=profile">My Profile</a>
                 </div>
 
                 <div class="list-container" id="purchase-history">
                     <div class="profile-pic">
                         <img src="../Images/Header/user.png">
                     </div>
-                    <a href="index.php?page=account&account_display=history">Purchase History</a>
+                    <a href="index.php?user=account&account_display=history">Purchase History</a>
                 </div>
 
                 <div class="list-container" id="reset-password">
                     <div class="profile-pic">
                         <img src="../Images/Header/user.png">
                     </div>
-                    <a href="index.php?page=account&account_display=reset_password">Reset Password</a>
+                    <a href="index.php?user=account&account_display=reset_password">Reset Password</a>
                 </div>
             </div>
 
@@ -95,6 +104,7 @@
                                 <button id="log-out-button" class="change-profile" type="submit">Log out</button>
                         </form>
                     </div>
+                    <script src="../JavaScript/profile_validation.js"></script>
                 <?php elseif ($display == 'history'): ?>
                     <div class="right-content" id="right-history">
                         <table>
@@ -138,23 +148,29 @@
 
                             <button id="change-pass-button" class="change-profile" type="submit">Save changes</button>
                         </form>
+                        <script src="../JavaScript/profile_password_validation.js"></script>
                     </div>
                 <?php endif; ?>
             </div>
         </section>
         <script src="../JavaScript/profile.js"></script>
-        <script src="../JavaScript/profile_validation.js"></script>
     <?php else: ?>
         <section id="credential">
             <?php if (!isset($_GET['form']) || $form == 'log_in' || $form == 'sign_up'): ?>
                 <div id="option">
-                    <a id="login" href="index.php?page=account&form=log_in">Log in</a>
-                    <a id="signup" href="index.php?page=account&form=sign_up">Sign up</a>
+                    <a id="login" href="index.php?user=account&form=log_in">Log in</a>
+                    <a id="signup" href="index.php?user=account&form=sign_up">Sign up</a>
                 </div>
             <?php endif; ?>
 
             <?php if (!isset($_GET['form']) || $form == 'log_in'): ?>
                 <form id="sign-in" action="../Backend/log_in.php" method="post" class="credential-form">
+                    <?php   
+                        if (isset($_SESSION['error_login'])) {
+                            echo $_SESSION['error_login'];
+                            unset ($_SESSION['error_login']);
+                        }
+                    ?>
                     <label for="username">E-mail address</label>
                     <input type="text" name="email" id="sign_in_email" class="username form-email" placeholder="Email address">
 
@@ -177,16 +193,16 @@
                         <input type="checkbox" id="sign_in_check" class="pass-show form-show">
                         <p>Show password</p>
                     </div>
-                    <a id="forgot" href="index.php?page=account&form=forgot_password">Forgot password?</a>
+                    <a id="forgot" href="index.php?user=account&form=forgot_password">Forgot password?</a>
                     <button id="log_in_button" class="form-submit" type="submit">Sign in</button>
                 </form>
                 <script src="../JavaScript/form_validation.js"></script>
             <?php elseif ($form == 'sign_up'): ?>
                 <form id="sign-up" action="../Backend/sign_up.php" method="post" class="credential-form">
                     <?php
-                        if (isset($_SESSION['error'])) {
-                            echo $_SESSION['error'];
-                            unset($_SESSION['error']);
+                        if (isset($_SESSION['error_signup'])) {
+                            echo $_SESSION['error_signup'];
+                            unset($_SESSION['error_signup']);
                         }
                     ?>
                     <label for="username">Username</label>
@@ -245,6 +261,14 @@
                         <h2>Forget your password?</h2>
                         <p>Type your email and new password!</p>
                     </div>
+
+                    <?php
+                        if (isset($_SESSION['error_forgot'])) {
+                            echo $_SESSION['error_forgot'];
+                            unset($_SESSION['error_forgot']);
+                        }
+                    ?>
+                    
                     <label for="email">Email</label>
                     <input type="text" id="forgot-email" name="email" class="email" placeholder="Enter email">
 
@@ -280,7 +304,7 @@
                     <button id="forgot-button" type="submit">Submit</button>
                     <div id="return-section">
                         <p>Remember your password?</p>
-                        <a id="login-return" href="index.php?page=account&form=log_in">Return to login</a>
+                        <a id="login-return" href="index.php?user=account&form=log_in">Return to login</a>
                     </div>
                 </form>
                 <script src="../JavaScript/forgot_password_validation.js"></script>

@@ -34,7 +34,7 @@
                             WHERE email = '$email'";
                 mysqli_query($conn, $update);
                 $_SESSION['image'] = $new_name;
-                header("location: ../Web pages/index.php?page=account");
+                header("location: ../Web pages/index.php?user=account");
                 exit;
             }
         } else {
@@ -44,7 +44,7 @@
                                birth_date = '$birth_date'
                             WHERE email = '$email'";
             mysqli_query($conn, $update);
-            header("location: ../Web pages/index.php?page=account");
+            header("location: ../Web pages/index.php?user=account");
             exit;
         }
     }

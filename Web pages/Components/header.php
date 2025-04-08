@@ -1,6 +1,5 @@
 <?php
     include "../Backend/connect_db.php";
-    session_start();
     $image_link = "../Images/Header/user.png";
     if (isset($_SESSION['email'])) {
         $user_id = $_SESSION['user_id'];
@@ -21,13 +20,28 @@
 <body>
 <header id="header">
         <h1 id="logo">Chocoley</h1>
-        <nav id="navigation">
-            <a href="index.php?page=home">HOME</a>
-            <a href="index.php?page=product_service">PRODUCT/SERVICE</a>
-            <a href="index.php?page=contact">CONTACT</a>
-        </nav>
+        <?php if (isset($_SESSION['role'])): ?>
+            <?php if ($_SESSION['role'] == 'user'): ?>
+                <nav id="navigation">
+                    <a href="index.php?user=home">HOME</a>
+                    <a href="index.php?user=product_service">PRODUCT/SERVICE</a>
+                    <a href="index.php?user=contact">CONTACT</a>
+                </nav>
+            <?php elseif ($_SESSION['role'] == 'seller'): ?>
+                <nav id="navigation">
+                    <a href="index.php?seller=home">HOME</a>
+                    <a href="index.php?seller=product">YOUR PRODUCTS</a>
+                </nav>
+            <?php endif; ?>
+        <?php else: ?>
+            <nav id="navigation">
+                <a href="index.php?user=home">HOME</a>
+                <a href="index.php?user=product_service">PRODUCT/SERVICE</a>
+                <a href="index.php?user=contact">CONTACT</a>
+            </nav>
+        <?php endif; ?>
         <div id="icon_placer">
-            <a href="index.php?page=account"><img id="user" src="<?php echo $image_link ?>" alt="user"></a>
+            <a href="index.php?user=account"><img id="user" src="<?php echo $image_link ?>" alt="user"></a>
         </div>
     </header>
 </body>

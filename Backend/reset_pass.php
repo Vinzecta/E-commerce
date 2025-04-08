@@ -10,7 +10,7 @@
                    SET password = '$password'
                    WHERE email = '$email'";
         mysqli_query($conn, $update);
-        header("location: ../Web pages/index.php?page=account");
+        header("location: ../Web pages/index.php?user=account");
         exit;
     }
 

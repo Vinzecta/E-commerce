@@ -1,10 +1,14 @@
 <?php
-    $page = 'home';
-    if (isset($_GET['page'])) {
-        $page = $_GET['page'];
+    session_start();
+    $page = "home";
+
+    if (isset($_GET['user'])) {
+        $page = $_GET['user'];
+        include "./User/$page.php";
+    } else if (isset($_GET['seller'])) {
+        $page = $_GET['seller'];
+        include "./Seller/$page.php";
+    } else {
+        include "./User/home.php";
     }
-    else if (isset($_POST['page'])) {
-        $page = $_POST['page'];
-    }
-    include "$page.php";
 ?>

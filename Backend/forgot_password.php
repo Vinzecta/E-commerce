@@ -13,9 +13,15 @@
                        SET password = '$password'
                        WHERE email = '$email'";
             mysqli_query($conn, $update);
-            header("location: ../Web pages/index.php?page=account");
+            header("location: ../Web pages/index.php?user=account");
             exit();
-        } else echo "Wrong";
+        } else {
+            $_SESSION['error_forgot'] = '<div class="alert">
+                                            <p>Email not found! Please try again</p>
+                                        </div>';
+            header("Location: ../Web pages/index.php?user=account&form=forgot_password");
+            exit();
+        }
     }
     mysqli_close($conn);
 ?>
