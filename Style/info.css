@@ -46,11 +46,12 @@
 }
 
 #right-information input {
-    width: 100%;
-    height: 60px;
     border-left: none;
     border-right: none;
     border-top: none;
+    padding: 20px;
+    font-family: "Josefin Slab", sans-serif;
+    outline: none;
 }
 
 #send_email {

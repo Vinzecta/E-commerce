@@ -20,7 +20,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
     <title>Chocoley - Home</title>
 </head>
-<body>    
+<body>   
     <script src="../JavaScript/home.js"></script>
 
     <?php

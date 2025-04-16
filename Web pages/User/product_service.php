@@ -66,7 +66,7 @@
                                 <p class="category"><b>Category:</b> ' .$row['category_name'].'</p>
                                 <div class="product-price">
                                     <h2 class="price">' .$row['price']. ' USD</h2>
-                                    <a href="index.php?page=product_detail">View</a>
+                                    <a href="index.php?user=product_detail">View</a>
                                 </div>
                             </div>';
                 }
@@ -76,9 +76,9 @@
 
     <section id="pagination">
         <?php if ($page > 1): ?>
-            <a href="index.php?page=product_service&page_number=<?php echo $page - 1 ?>&order_name=<?php echo $order_name ?>&order=<?php echo $order ?>"><img src="../Images/Product_service/left_arrow.png" alt="left-arrow"></a>
+            <a href="index.php?user=product_service&page_number=<?php echo $page - 1 ?>&order_name=<?php echo $order_name ?>&order=<?php echo $order ?>"><img src="../Images/Product_service/left_arrow.png" alt="left-arrow"></a>
         <?php else: ?>
-            <a href="index.php?page=product_service&page_number=<?php echo $page ?>&order_name=<?php echo $order_name ?>&order=<?php echo $order ?>"><img src="../Images/Product_service/left_arrow.png" alt="left-arrow"></a>
+            <a href="index.php?user=product_service&page_number=<?php echo $page ?>&order_name=<?php echo $order_name ?>&order=<?php echo $order ?>"><img src="../Images/Product_service/left_arrow.png" alt="left-arrow"></a>
         <?php endif; ?>
 
         <div class="pagination-list">
@@ -90,23 +90,23 @@
                 $total_page = ceil($total_row / $product_per_page);
                 if ($total_page > 6) {
                     for ($x = $page; $x <= $page + 3; $x++) {
-                        echo '<a class="pagination-number" href="index.php?page=product_service&page_number=' .$x. '&order_name='.$order_name.'&order='.$order.'"><p>'.$x.'</p></a>';
+                        echo '<a class="pagination-number" href="index.php?user=product_service&page_number=' .$x. '&order_name='.$order_name.'&order='.$order.'"><p>'.$x.'</p></a>';
                     }
                     echo '<p class="dots">...</p>';
                     for ($y = $total_page - 3; $y <= $total_page; $y++) {
-                        echo '<a class="pagination-number" href="index.php?page=product_service&page_number=' .$y. '&order_name='.$order_name.'&order='.$order.'"><p>'.$y.'</p></a>';
+                        echo '<a class="pagination-number" href="index.php?user=product_service&page_number=' .$y. '&order_name='.$order_name.'&order='.$order.'"><p>'.$y.'</p></a>';
                     }
                 }
 
                 for ($i = 1; $i <= $total_page; $i++) {
-                    echo '<a class="pagination-number" href="index.php?page=product_service&page_number=' .$i. '&order_name='.$order_name.'&order='.$order.'"><p>'.$i.'</p></a>';
+                    echo '<a class="pagination-number" href="index.php?user=product_service&page_number=' .$i. '&order_name='.$order_name.'&order='.$order.'"><p>'.$i.'</p></a>';
                 }
             ?>
         </div>
         <?php if ($page < $total_page): ?>
-            <a href="index.php?page=product_service&page_number=<?php echo $page + 1 ?>&order_name=<?php echo $order_name ?>&order=<?php echo $order ?>"><img src="../Images/Product_service/right_arrow.png" alt="right-arrow"></a>
+            <a href="index.php?user=product_service&page_number=<?php echo $page + 1 ?>&order_name=<?php echo $order_name ?>&order=<?php echo $order ?>"><img src="../Images/Product_service/right_arrow.png" alt="right-arrow"></a>
         <?php else: ?>
-            <a href="index.php?page=product_service&page_number=<?php echo $page?>&order_name=<?php echo $order_name ?>&order=<?php echo $order ?>"><img src="../Images/Product_service/right_arrow.png" alt="right-arrow"></a>
+            <a href="index.php?user=product_service&page_number=<?php echo $page?>&order_name=<?php echo $order_name ?>&order=<?php echo $order ?>"><img src="../Images/Product_service/right_arrow.png" alt="right-arrow"></a>
         <?php endif; ?>
     </section>
 
@@ -130,10 +130,10 @@
                     clickcount = 1;
                 }
                 if (clickcount % 2 != 0) {
-                    window.location.href = `index.php?page=product_service&page_number=${page_number}&order_name=name&order=ASC`;
+                    window.location.href = `index.php?user=product_service&page_number=${page_number}&order_name=name&order=ASC`;
                     clickcount++;
                 } else {
-                    window.location.href = `index.php?page=product_service&page_number=${page_number}&order_name=name&order=DESC`;
+                    window.location.href = `index.php?user=product_service&page_number=${page_number}&order_name=name&order=DESC`;
                     clickcount++;
                 }
             });
@@ -144,10 +144,10 @@
                     clickcount = 1;
                 }
                 if (clickcount % 2 != 0) {
-                    window.location.href = `index.php?page=product_service&page_number=${page_number}&order_name=price&order=ASC`;
+                    window.location.href = `index.php?user=product_service&page_number=${page_number}&order_name=price&order=ASC`;
                     clickcount++;
                 } else {
-                    window.location.href = `index.php?page=product_service&page_number=${page_number}&order_name=price&order=DESC`;
+                    window.location.href = `index.php?user=product_service&page_number=${page_number}&order_name=price&order=DESC`;
                     clickcount++;
                 }
             })

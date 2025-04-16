@@ -139,8 +139,11 @@ body, html {
 
 .pagination-number:hover {
     background-color: rgb(42, 42, 198);
-    font-weight: 300;
     color: white;
+}
+.pagination-number p:hover {
+    color: white;
+    font-weight: 300;
 }
 
 #pagination img:hover {

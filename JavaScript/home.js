@@ -14,7 +14,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 if (left_slideshow[y].style.color != "black") {
                     left_slideshow[y].style.color = "black";
                     slideshow[y].style.display = "none";
-                    preload_image(img[y].src);
                 }
             }
         });

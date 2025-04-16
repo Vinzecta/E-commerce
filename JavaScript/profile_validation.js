@@ -15,18 +15,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
     button.addEventListener("click", function(e) {
         let valid = true;
-        if (phone_number.value.length == 0) {
+        for (let i = 0; i < alert.length; i++) {
+            if (alert[i].style.display == "block") {
+                valid = false;
+                break;
+            }
+        }
+        if (!valid) {
             e.preventDefault();
-        } else {
-            for (let i = 0; i < alert.length; i++) {
-                if (alert[i].style.display == "block") {
-                    valid = false;
-                    break;
-                }
-            }
-            if (!valid) {
-                e.preventDefault();
-            }
         }
     });
 });

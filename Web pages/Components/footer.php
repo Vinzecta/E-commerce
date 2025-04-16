@@ -6,6 +6,6 @@
     <link rel="stylesheet" href="../Style/footer.css">
 </head>
 <body>
-<footer><p>&copy Tran Trung Vinh</p></footer>
+    <footer><p>&copy Tran Trung Vinh</p></footer>
 </body>
 </html>

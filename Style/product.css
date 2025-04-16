@@ -22,3 +22,9 @@
 #image-edit img {
     border-radius: 0px;
 }
+
+textarea {
+    font-family: "Josefin Slab", serif;
+    padding: 20px;
+    padding-bottom: 0;
+}

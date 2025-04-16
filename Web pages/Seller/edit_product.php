@@ -17,6 +17,9 @@
             WHERE p.id = $product_id";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
+
+    $category = "SELECT * FROM categories";
+    $category_query = mysqli_query($conn, $category);
 ?>
 
 <!DOCTYPE html>
@@ -40,34 +43,31 @@
                 <div id="right-account-title">
                     <h1>Product Detail</h1>
                 </div>
-                <form id="edit-profile" action="../Backend/edit_profile.php" method="post" enctype="multipart/form-data">
+                <form id="edit-profile" action="../Backend/edit_product.php" method="post" enctype="multipart/form-data">
                     <div id="image-edit">
                         <img id="user-image" src="../Images/Edit product/image.png" alt="image">
                         <input id="file-upload" name="image" type="file" accept=".jpg,.png">
                     </div>
                     <label>Product Name</label>
-                    <input type="text" value="<?php echo $row['name'] ?>">
-                    <label>Email</label>
-                    <input type="text">
-                    <label>Phone number</label>
-                    <input type="number">
-                        
-                    <label>Gender</label>
-                    <div id="gender">
-                        <input type="radio" name="gender">
-                        <label>Male</label>
-                        <input type="radio" name="gender">
-                        <label>Female</label>
-                        <input type="radio" name="gender">
-                        <label>Other</label>
-                    </div>
-                    <label>Date of birth</label>
-                    <input type="date">
-                    <button id="save-profile" class="change-profile" type="submit">Save changes</button>
+                    <input type="text" name="product_name" value="<?php echo $row['name'] ?>">
+                    <label>Category</label>
+                    <select name="category">
+                        <?php
+                            while ($category_row = mysqli_fetch_assoc($category_query)) {
+                                $selected = ($category_row['name'] == $row['category_name']) ? 'selected' : '';
+                                echo '<option value="' . $category_row['name'] . '" ' . $selected . '>' . $category_row['name'] . '</option>';
+                            }
+                        ?>
+                    </select>
+                    <label>Description</label>
+                    <textarea name="description"><?php echo $row['description'] ?></textarea>
+
+                    <label>Price</label>
+                    <input type="text" name="price" value="<?php echo $row['price']?>">
+                    <button class="change-profile" type="submit">Save Changes</button>
                 </form>
-                <form id="log-out" action="../Backend/log_out.php">
-                        <button id="log-out-button" class="change-profile" type="submit">Log out</button>
-                </form>
+                    
+               
             </div>     
     </section>
 
@@ -75,6 +75,8 @@
         include "./Components/info.php";
         include "./Components/footer.php";
     ?>
+
+    <script src="../JavaScript/profile.js"></script>
 </body>
 </html>
 
