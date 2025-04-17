@@ -90,16 +90,16 @@
                 $total_page = ceil($total_row / $product_per_page);
                 if ($total_page > 6) {
                     for ($x = $page; $x <= $page + 3; $x++) {
-                        echo '<a class="pagination-number" href="index.php?user=product_service&page_number=' .$x. '&order_name='.$order_name.'&order='.$order.'"><p>'.$x.'</p></a>';
+                        echo '<a class="pagination-number" href="index.php?user=product_service&page_number=' .$x. '&order_name='.$order_name.'&order='.$order.'">'.$x.'</a>';
                     }
                     echo '<p class="dots">...</p>';
                     for ($y = $total_page - 3; $y <= $total_page; $y++) {
-                        echo '<a class="pagination-number" href="index.php?user=product_service&page_number=' .$y. '&order_name='.$order_name.'&order='.$order.'"><p>'.$y.'</p></a>';
+                        echo '<a class="pagination-number" href="index.php?user=product_service&page_number=' .$y. '&order_name='.$order_name.'&order='.$order.'">'.$y.'</a>';
                     }
                 }
 
                 for ($i = 1; $i <= $total_page; $i++) {
-                    echo '<a class="pagination-number" href="index.php?user=product_service&page_number=' .$i. '&order_name='.$order_name.'&order='.$order.'"><p>'.$i.'</p></a>';
+                    echo '<a class="pagination-number" href="index.php?user=product_service&page_number=' .$i. '&order_name='.$order_name.'&order='.$order.'">'.$i.'</a>';
                 }
             ?>
         </div>

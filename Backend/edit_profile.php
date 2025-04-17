@@ -17,9 +17,9 @@
         if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
             $image = $_FILES['image']['name'];
             $tmp_image = $_FILES['image']['tmp_name'];
-            $new_name = uniqid() . "_" . basename($image);
+            // $new_name = uniqid() . "_" . basename($image);
             $target_dir = '../Images/User/' .$result["user_id"];
-            $target_file = $target_dir . '/' . $new_name;
+            $target_file = $target_dir . '/' . $image;
 
             if (!is_dir($target_dir)) {
                 mkdir($target_dir,0777, true);
@@ -30,10 +30,10 @@
                            SET phone_number = '$phone_number',
                                gender = '$gender',
                                birth_date = '$birth_date',
-                               profile_image = '$new_name'
+                               profile_image = '$image'
                             WHERE email = '$email'";
                 mysqli_query($conn, $update);
-                $_SESSION['image'] = $new_name;
+                $_SESSION['image'] = $image;
                 header("location: ../Web pages/index.php?user=account");
                 exit;
             }

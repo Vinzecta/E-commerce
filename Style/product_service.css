@@ -109,25 +109,28 @@ body, html {
     height: 100%;
     display: flex;
     gap: 20px;
+    margin: auto 0;
 }
 
 .pagination-number {
-    width: 10%;
+    width: fit-content;
     height: 100%;
     margin: auto 0;
     padding: 10px;
     border-radius: 15px;
     text-decoration: none;
+    font-size: 20px;
+    color: black;
 }
 
-.pagination-number p {
+/* .pagination-number p {
     width: fit-content;
     height: fit-content;
     margin: 0;
     margin: 0 auto;
     font-size: 20px;
     color: black;
-}
+} */
 
 #pagination img {
     height: 20px;
@@ -140,10 +143,7 @@ body, html {
 .pagination-number:hover {
     background-color: rgb(42, 42, 198);
     color: white;
-}
-.pagination-number p:hover {
-    color: white;
-    font-weight: 300;
+    font-weight: bold;
 }
 
 #pagination img:hover {

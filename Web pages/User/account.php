@@ -71,7 +71,11 @@
                         </div>
                         <form id="edit-profile" action="../Backend/edit_profile.php" method="post" enctype="multipart/form-data">
                             <div id="image-edit">
-                                <img id="user-image" src="../Images/Account/user.png" alt="user">
+                                <?php if ($_SESSION['image'] == null): ?>
+                                    <img id="user-image" src="../Images/Account/user.png" alt="user">
+                                <?php else: ?>
+                                    <img id="user-image" src="<?php echo '../Images/User/' . $profile['user_id'] . '/' . $_SESSION['image']; ?>" alt="user">
+                                <?php endif; ?>
                                 <input id="file-upload" name="image" type="file" accept=".jpg,.png">
                             </div>
                             <label>Username</label>
@@ -226,7 +230,7 @@
                     <label for="role">Role</label>
                     <select name="role">
                         <option value="user">User</option>
-                        <option value="admin">Admin</option>
+                        <!-- <option value="admin">Admin</option> -->
                         <option value="seller">Seller</option>
                     </select>
 

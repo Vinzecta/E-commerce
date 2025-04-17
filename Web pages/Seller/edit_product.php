@@ -11,7 +11,9 @@
 
 <?php
     include "../Backend/connect_db.php";
+    $seller_id = $_SESSION['user_id'];
     $product_id = $_GET['product_id'];
+    $_SESSION['product_id'] = $product_id;
     $sql = "SELECT p.name, p.description, p.price, p.image, c.name AS category_name
             FROM products p JOIN categories c ON p.category_id = c.category_id
             WHERE p.id = $product_id";
@@ -45,7 +47,7 @@
                 </div>
                 <form id="edit-profile" action="../Backend/edit_product.php" method="post" enctype="multipart/form-data">
                     <div id="image-edit">
-                        <img id="user-image" src="../Images/Edit product/image.png" alt="image">
+                        <img id="user-image" src="../Images/Seller/<?php echo $seller_id . '/' . $row['image']; ?>" alt="image">
                         <input id="file-upload" name="image" type="file" accept=".jpg,.png">
                     </div>
                     <label>Product Name</label>

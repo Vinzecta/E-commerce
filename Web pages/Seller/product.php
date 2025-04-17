@@ -62,17 +62,17 @@
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo '<div class="product">
-                                <div class="product-image">
-                                    <img src="../Images/Products/' .$row['image']. '" alt="white-chocolate">
-                                </div>
-                                <h1 class="product-name">' .$row['name']. '</h1>
-                                <p class="description">'.$row['description']. '</p>
-                                <p class="category"><b>Category:</b> ' .$row['category_name'].'</p>
-                                <div class="product-price">
-                                    <h2 class="price">' .$row['price']. ' USD</h2>
-                                    <a href="index.php?seller=edit_product&product_id=' . $row['product_id'] . '">View</a>
-                                </div>
-                            </div>';
+                            <div class="product-image">
+                                <img id="user-image" src="../Images/Seller/' . $row['seller_id'] . '/' . $row['image'] . '" alt="Chocolate">
+                            </div>
+                            <h1 class="product-name">' . $row['name'] . '</h1>
+                            <p class="description">' . $row['description'] . '</p>
+                            <p class="category"><b>Category:</b> ' . $row['category_name'] . '</p>
+                            <div class="product-price">
+                                <h2 class="price">' . $row['price'] . ' USD</h2>
+                                <a href="index.php?seller=edit_product&product_id=' . $row['product_id'] . '">View</a>
+                            </div>
+                        </div>';
                 }
             }
         ?>
@@ -94,15 +94,15 @@
                 $total_page = ceil($total_row / $product_per_page);
                 if ($total_page > 6) {
                     for ($x = $page; $x <= $page + 3; $x++) {
-                        echo '<a class="pagination-number" href="index.php?seller=product&page_number=' .$x. '&order_name='.$order_name.'&order='.$order.'"><p>'.$x.'</p></a>';
+                        echo '<a class="pagination-number" href="index.php?seller=product&page_number=' .$x. '&order_name='.$order_name.'&order='.$order.'">'.$x.'</a>';
                     }
                     echo '<p class="dots">...</p>';
                     for ($y = $total_page - 3; $y <= $total_page; $y++) {
-                        echo '<a class="pagination-number" href="index.php?seller=product&page_number=' .$y. '&order_name='.$order_name.'&order='.$order.'"><p>'.$y.'</p></a>';
+                        echo '<a class="pagination-number" href="index.php?seller=product&page_number=' .$y. '&order_name='.$order_name.'&order='.$order.'">'.$y.'</a>';
                     }
                 } else {
                     for ($i = 1; $i <= $total_page; $i++) {
-                        echo '<a class="pagination-number" href="index.php?seller=product&page_number=' .$i. '&order_name='.$order_name.'&order='.$order.'"><p>'.$i.'</p></a>';
+                        echo '<a class="pagination-number" href="index.php?seller=product&page_number=' .$i. '&order_name='.$order_name.'&order='.$order.'">'.$i.'</a>';
                     }
                 }
             ?>
