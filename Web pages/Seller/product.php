@@ -116,7 +116,6 @@
 
     <?php
         include "./Components/add_section.php";
-        include "./Components/info.php";
         include "./Components/footer.php";
     ?>
 

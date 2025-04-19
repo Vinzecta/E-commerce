@@ -1,0 +1,90 @@
+body, html {
+    font-family: "Josefin Slab", serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+#introduction {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5%;
+}
+
+#introduction p {
+    width: fit-content;
+    font-size: 20px;
+    margin: 0;
+}
+
+#introduction h1 {
+    width: fit-content;
+    font-size: 50px;
+    margin: 0;
+}
+
+#add-product {
+    width: 80%;
+    margin-left: 10%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    margin-top: 5%;
+    border-radius: 15px;
+    background-color: #f2f2f2;
+}
+
+#product-information {
+    font-size: 30px;
+    padding-bottom: 10px;
+    border-bottom: ridge 1px black;
+    font-weight: bold;
+    text-align: center;
+}
+
+#product-image {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+#product-image img {
+    width: 300px;
+    height: 300px;
+}
+
+#form-input {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-bottom: 20px;
+}
+
+#form-input input {
+    padding: 20px;
+    font-family: "Josefin Slab", serif;
+}
+
+#form-input textarea {
+    padding: 20px;
+    font-family: "Josefin Slab", serif;
+}
+
+#add-product button {
+    padding: 20px 0 20px 0;
+    background-color: black;
+    font-family: "Josefin Slab", serif;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 15px;
+}
+
