@@ -66,7 +66,7 @@
             </div>
 
             <label>Description</label>
-            <textarea placeholder="Enter Description"></textarea>
+            <textarea id="product-description" placeholder="Enter Description"></textarea>
 
             <div class="alert alert-profile" style="display: none">
                 <p>This field is required!</p>
@@ -77,7 +77,7 @@
             </div>
 
             <label>Price</label>
-            <input type="number" placeholder="Enter Price">
+            <input id="product-price" type="number" placeholder="Enter Price">
 
             <div class="alert alert-profile" style="display: none">
                 <p>This field is required!</p>
@@ -87,7 +87,7 @@
                 <p>Price must not be negative</p>
             </div>
         </div>
-        <button type="submit">Add New Product</button>
+        <button id="submit-product" type="submit">Add New Product</button>
     </form>
 
     <?php
