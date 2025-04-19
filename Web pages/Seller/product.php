@@ -19,6 +19,10 @@
     $order_name = isset($_GET['order_name']) && in_array($_GET['order_name'], array('name','price')) ? $_GET['order_name'] : 'name';
     $order_sql = "$order_name $order";
 
+    $_SESSION['order_sql'] = $order_sql;
+    $_SESSION['product_per_page'] = $product_per_page;
+    $_SESSION['offset'] = $offset;
+
     $user_id = $_SESSION['user_id'];
 
     $sql = "SELECT s.seller_id, s.product_id, p.name, p.description, p.price, p.image, c.name AS category_name
@@ -49,13 +53,13 @@
         include "./Components/search.php";
     ?>
 
-    <section id="sort">
+    <!-- <section id="sort">
         <p id="sort-by">Sort by:</p>
         <p>Name</p>
         <img id="name-sort" src="../Images/Product_service/sort.png" alt="Alphabet sort">
         <p>Price</p>
         <img id="price-sort" src="../Images/Product_service/arrow.png" alt="Price sort">
-    </section>
+    </section> -->
 
     <section id="product-container">
         <?php
