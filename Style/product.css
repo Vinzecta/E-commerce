@@ -28,3 +28,15 @@ textarea {
     padding: 20px;
     padding-bottom: 0;
 }
+
+#delete-product {
+    width: 100%;
+    padding: 20px;
+    font-family: "Josefin Slab", serif;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    border: none;
+    border-radius: 15px;
+}

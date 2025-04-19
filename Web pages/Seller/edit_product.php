@@ -14,14 +14,20 @@
     $seller_id = $_SESSION['user_id'];
     $product_id = $_GET['product_id'];
     $_SESSION['product_id'] = $product_id;
-    $sql = "SELECT p.name, p.description, p.price, p.image, c.name AS category_name
+    $sql = "SELECT p.id, p.name, p.description, p.price, p.image, c.name AS category_name
             FROM products p JOIN categories c ON p.category_id = c.category_id
             WHERE p.id = $product_id";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
 
+    if ($row['id'] == null) {
+        header("Location: ../Web pages/index.php?seller=product");
+    }
+
     $category = "SELECT * FROM categories";
     $category_query = mysqli_query($conn, $category);
+
+    $_SESSION['product_id'] = $_GET['product_id'];
 ?>
 
 <!DOCTYPE html>
@@ -47,7 +53,7 @@
                 </div>
                 <form id="edit-profile" action="../Backend/edit_product.php" method="post" enctype="multipart/form-data">
                     <div id="image-edit">
-                        <img id="user-image" src="../Images/Seller/<?php echo $seller_id . '/' . $row['image']; ?>" alt="image">
+                        <img id="user-image" src="../Images/Products/<?php echo $row['image']; ?>" alt="image">
                         <input id="file-upload" name="image" type="file" accept=".jpg,.png">
                     </div>
                     <label>Product Name</label>
@@ -68,8 +74,10 @@
                     <input type="text" name="price" value="<?php echo $row['price']?>">
                     <button class="change-profile" type="submit">Save Changes</button>
                 </form>
-                    
-               
+
+                <form method="post" action="../Backend/delete_product.php">
+                        <button id="delete-product" type="submit">Delete Product</button>
+                </form>    
             </div>     
     </section>
 

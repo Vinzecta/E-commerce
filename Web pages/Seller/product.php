@@ -63,14 +63,14 @@
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo '<div class="product">
                             <div class="product-image">
-                                <img id="user-image" src="../Images/Seller/' . $row['seller_id'] . '/' . $row['image'] . '" alt="Chocolate">
+                                <img id="user-image" src="../Images/Products/' . $row['image'] . '" alt="Chocolate">
                             </div>
                             <h1 class="product-name">' . $row['name'] . '</h1>
                             <p class="description">' . $row['description'] . '</p>
                             <p class="category"><b>Category:</b> ' . $row['category_name'] . '</p>
                             <div class="product-price">
                                 <h2 class="price">' . $row['price'] . ' USD</h2>
-                                <a href="index.php?seller=edit_product&product_id=' . $row['product_id'] . '">View</a>
+                                <a href="index.php?seller=edit_product&product_id=' . $row['product_id'] . '">Edit</a>
                             </div>
                         </div>';
                 }
