@@ -27,11 +27,17 @@
                     <a href="index.php?user=product_service">PRODUCT/SERVICE</a>
                     <a href="index.php?user=contact">CONTACT</a>
                 </nav>
+                <div id="icon_placer">
+                    <a href="index.php?user=account"><img id="user" src="<?php echo $image_link ?>" alt="user"></a>
+                </div>
             <?php elseif ($_SESSION['role'] == 'seller'): ?>
                 <nav id="navigation">
                     <a href="index.php?seller=home">HOME</a>
                     <a href="index.php?seller=product">YOUR PRODUCTS</a>
                 </nav>
+                <div id="icon_placer">
+                    <a href="index.php?seller=account"><img id="user" src="<?php echo $image_link ?>" alt="user"></a>
+                </div>
             <?php endif; ?>
         <?php else: ?>
             <nav id="navigation">
@@ -39,10 +45,10 @@
                 <a href="index.php?user=product_service">PRODUCT/SERVICE</a>
                 <a href="index.php?user=contact">CONTACT</a>
             </nav>
+            <div id="icon_placer">
+                <a href="index.php?user=account"><img id="user" src="<?php echo $image_link ?>" alt="user"></a>
+            </div>
         <?php endif; ?>
-        <div id="icon_placer">
-            <a href="index.php?user=account"><img id="user" src="<?php echo $image_link ?>" alt="user"></a>
-        </div>
     </header>
 </body>
 </html>

@@ -36,21 +36,21 @@
                     <div class="profile-pic">
                         <img src="../Images/Header/user.png">
                     </div>
-                    <a href="index.php?user=account&account_display=profile">My Profile</a>
+                    <a href="index.php?seller=account&account_display=profile">My Profile</a>
                 </div>
 
                 <div class="list-container" id="purchase-history">
                     <div class="profile-pic">
                         <img src="../Images/Header/user.png">
                     </div>
-                    <a href="index.php?user=account&account_display=history">Purchase History</a>
+                    <a href="index.php?seller=account&account_display=history">Purchase History</a>
                 </div>
 
                 <div class="list-container" id="reset-password">
                     <div class="profile-pic">
                         <img src="../Images/Header/user.png">
                     </div>
-                    <a href="index.php?user=account&account_display=reset_password">Reset Password</a>
+                    <a href="index.php?seller=account&account_display=reset_password">Reset Password</a>
                 </div>
             </div>
 
@@ -149,162 +149,6 @@
             </div>
         </section>
         <script src="../JavaScript/profile.js"></script>
-    <?php else: ?>
-        <section id="credential">
-            <?php if (!isset($_GET['form']) || $form == 'log_in' || $form == 'sign_up'): ?>
-                <div id="option">
-                    <a id="login" href="index.php?user=account&form=log_in">Log in</a>
-                    <a id="signup" href="index.php?user=account&form=sign_up">Sign up</a>
-                </div>
-            <?php endif; ?>
-
-            <?php if (!isset($_GET['form']) || $form == 'log_in'): ?>
-                <form id="sign-in" action="../Backend/log_in.php" method="post" class="credential-form">
-                    <?php   
-                        if (isset($_SESSION['error_login'])) {
-                            echo $_SESSION['error_login'];
-                            unset ($_SESSION['error_login']);
-                        }
-                    ?>
-                    <label for="username">E-mail address</label>
-                    <input type="text" name="email" id="sign_in_email" class="username form-email" placeholder="Email address">
-
-                    <div class="alert alert-form" style="display: none">
-                        <p>This field is required!</p>
-                    </div>
-
-                    <div class="alert alert-form" style="display: none">
-                        <p>Please enter a valid email address!</p>
-                    </div>
-
-                    <label for="password">Password</label>
-                    <input type="password" name="password" id="sign_in_password" class="password form-password" placeholder="Enter password">
-
-                    <div class="alert alert-form" style="display: none">
-                        <p>This field is required!</p>
-                    </div>
-
-                    <div class="show-password">
-                        <input type="checkbox" id="sign_in_check" class="pass-show form-show">
-                        <p>Show password</p>
-                    </div>
-                    <a id="forgot" href="index.php?user=account&form=forgot_password">Forgot password?</a>
-                    <button id="log_in_button" class="form-submit" type="submit">Sign in</button>
-                </form>
-                <script src="../JavaScript/form_validation.js"></script>
-            <?php elseif ($form == 'sign_up'): ?>
-                <form id="sign-up" action="../Backend/sign_up.php" method="post" class="credential-form">
-                    <?php
-                        if (isset($_SESSION['error_signup'])) {
-                            echo $_SESSION['error_signup'];
-                            unset($_SESSION['error_signup']);
-                        }
-                    ?>
-                    <label for="username">Username</label>
-                    <input type="text" name="username" id="signup_username" class="username form-username" placeholder="Enter username">
-
-                    <div class="alert alert-form" style="display: none">
-                        <p>This field is required!</p>
-                    </div>
-
-                    <label for="email">Email</label>
-                    <input type="text" name="email" id="sign-up-email" class="email form-email" placeholder="Enter email">
-
-                    <div class="alert alert-form" style="display: none">
-                        <p>This field is required!</p>
-                    </div>
-
-                    <div class="alert alert-form" style="display: none">
-                        <p>Please enter a valid email address!</p>
-                    </div>
-
-                    <label for="role">Role</label>
-                    <select name="role">
-                        <option value="user">User</option>
-                        <!-- <option value="admin">Admin</option> -->
-                        <option value="seller">Seller</option>
-                    </select>
-
-                    <label for="password">Password</label>
-                    <input type="password" id="sign-up-password" name="password" class="password" placeholder="Enter password">
-
-                    <div class="alert alert-form" style="display: none">
-                        <p>This field is require</p>
-                    </div>
-
-                    <label for="retype_password">Re-type password</label>
-                    <input type="password" id="sign-up-confirm-password" class="password" placeholder="Re-type password">
-
-                    <div class="alert alert-form" style="display: none">
-                        <p>This field is require</p>
-                    </div>
-
-                    <div class="alert alert-form" style="display: none">
-                        <p>Password does not match!</p>
-                    </div>
-
-                    <div class="show-password">
-                        <input id="sign-up-show" type="checkbox" class="pass-show" value="yes">
-                        <p>Show password</p>
-                    </div>
-                    <button id="sign-up-button" type="submit">Sign up</button>
-                </form>
-                <script src="../JavaScript/signup_validation.js"></script>
-            <?php elseif ($form == 'forgot_password'): ?>
-                <form id="forgot-password" class="credential-form" action="../Backend/forgot_password.php" method="post">
-                    <div id="instruction">
-                        <h2>Forget your password?</h2>
-                        <p>Type your email and new password!</p>
-                    </div>
-
-                    <?php
-                        if (isset($_SESSION['error_forgot'])) {
-                            echo $_SESSION['error_forgot'];
-                            unset($_SESSION['error_forgot']);
-                        }
-                    ?>
-                    
-                    <label for="email">Email</label>
-                    <input type="text" id="forgot-email" name="email" class="email" placeholder="Enter email">
-
-                    <div class="alert alert-form" style="display: none">
-                        <p>This field is required!</p>
-                    </div>
-
-                    <div class="alert alert-form" style="display: none">
-                        <p>Please enter a valid email address!</p>
-                    </div>
-                    <label for="password">Password</label>
-                    <input type="password" id="forgot-password-form" name="password" class="password" placeholder="Enter password">
-
-                    <div class="alert alert-form" style="display: none">
-                        <p>This field is required!</p>
-                    </div>
-
-                    <label for="retype_password">Re-type password</label>
-                    <input type="password" id="forgot-retype" class="password" placeholder="Re-type password">
-
-                    <div class="alert alert-form" style="display: none">
-                        <p>This field is required!</p>
-                    </div>
-
-                    <div class="alert alert-form" style="display: none">
-                        <p>Password does not match!</p>
-                    </div>
-
-                    <div class="show-password">
-                        <input id="forgot-show" type="checkbox" class="pass-show" value="yes">
-                        <p>Show password</p>
-                    </div>
-                    <button id="forgot-button" type="submit">Submit</button>
-                    <div id="return-section">
-                        <p>Remember your password?</p>
-                        <a id="login-return" href="index.php?user=account&form=log_in">Return to login</a>
-                    </div>
-                </form>
-                <script src="../JavaScript/forgot_password_validation.js"></script>
-            <?php endif; ?>
-        </section>
     <?php endif; ?>
 
     <?php
