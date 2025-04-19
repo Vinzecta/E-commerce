@@ -23,31 +23,69 @@
         <p id="product-information">Product Information</p>
 
         <div id="product-image">
-            <img src="../Images/Edit product/image.png" alt="image">
-            <input type="file" accept=".jpg,.png">
+            <img id="user-image" src="../Images/Edit product/image.png" alt="image">
+            <input id="file-upload" type="file" accept=".jpg,.png">
         </div>
 
         <div id="form-input">
             <label>Product Name</label>
-            <input type="text" placeholder="Enter Product Name">
+            <input id="product-name" type="text" placeholder="Enter Product Name">
+
+            <div class="alert alert-profile" style="display: none">
+                <p>This field is required!</p>
+            </div>
+
+            <div class="alert alert-profile" style="display: none">
+                <p>Product name must have between 1 - 30 characters!</p>
+            </div>
 
             <label>Category</label>
-            <select>
-                <option>Category</option>
-                <option>A</option>
-                <option>B</option>
-                <option>C</option>
-            </select>
+            <div id="old-cate">
+                <select id="category-select">
+                    <option>Category</option>
+                    <option>A</option>
+                    <option>B</option>
+                    <option>C</option>
+                </select>
 
-            <p>Have a new category? Please <span>Click here</span></p>
-            <input type="text" placeholder="Enter New Category">
-            <p>Return to Category Selection</p>
+                <p>Have a new category? Please <span id="to-new-cate">Click here</span></p>
+            </div>
+
+            <div id="new-category" style="display: none">
+                <input id="new-cate" type="text" placeholder="Enter New Category">
+
+                <div class="alert alert-profile" style="display: none">
+                    <p>This field is required!</p>
+                </div>
+
+                <div class="alert alert-profile" style="display: none">
+                    <p>Category name must have between 1 - 30 characters!</p>
+                </div>
+
+                <p id="selection-return">Return to Category Selection</p>
+            </div>
 
             <label>Description</label>
             <textarea placeholder="Enter Description"></textarea>
 
+            <div class="alert alert-profile" style="display: none">
+                <p>This field is required!</p>
+            </div>
+
+            <div class="alert alert-profile" style="display: none">
+                <p>Description must have between 1 - 200 characters</p>
+            </div>
+
             <label>Price</label>
             <input type="number" placeholder="Enter Price">
+
+            <div class="alert alert-profile" style="display: none">
+                <p>This field is required!</p>
+            </div>
+
+            <div class="alert alert-profile" style="display: none">
+                <p>Price must not be negative</p>
+            </div>
         </div>
         <button type="submit">Add New Product</button>
     </form>
@@ -55,5 +93,7 @@
     <?php
         include "./Components/footer.php";
     ?>
+
+    <script src="../JavaScript/add_product.js"></script>
 </body>
 </html>
