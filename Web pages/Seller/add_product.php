@@ -1,3 +1,14 @@
+<?php
+    if (!isset($_SESSION['role']) || $_SESSION['role'] != 'seller') {
+        header('Location: ../Web pages/index.php?user=home');
+    }
+
+    include "../Backend/connect_db.php";
+
+    $sql = 'SELECT * FROM categories';
+    $result = mysqli_query($conn, $sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,17 +30,24 @@
         <p>Please fill the information below to add a new product!</p>
     </section>
 
-    <form id="add-product">
+    <form id="add-product" method="post" action="../Backend/add_product.php" enctype="multipart/form-data">
         <p id="product-information">Product Information</p>
+
+        <?php
+            if (isset($_SESSION['success'])) {
+                echo $_SESSION['success'];
+                unset($_SESSION['success']);
+            }
+        ?>
 
         <div id="product-image">
             <img id="user-image" src="../Images/Edit product/image.png" alt="image">
-            <input id="file-upload" type="file" accept=".jpg,.png">
+            <input name="image" id="file-upload" type="file" accept=".jpg,.png">
         </div>
 
         <div id="form-input">
             <label>Product Name</label>
-            <input id="product-name" type="text" placeholder="Enter Product Name">
+            <input name="name" id="product-name" type="text" placeholder="Enter Product Name">
 
             <div class="alert alert-profile" style="display: none">
                 <p>This field is required!</p>
@@ -41,18 +59,27 @@
 
             <label>Category</label>
             <div id="old-cate">
-                <select id="category-select">
+                <select name="category" id="category-select">
                     <option>Category</option>
-                    <option>A</option>
-                    <option>B</option>
-                    <option>C</option>
+                    <?php
+                        while( $row = mysqli_fetch_assoc($result) ) {
+                            echo '<option>' .$row['name']. '</option>';
+                        };
+                    ?>
                 </select>
+
+            <?php
+                if (isset($_SESSION['error'])) {
+                    echo $_SESSION['error'];
+                    unset($_SESSION['error']);
+                };
+            ?>
 
                 <p>Have a new category? Please <span id="to-new-cate">Click here</span></p>
             </div>
 
             <div id="new-category" style="display: none">
-                <input id="new-cate" type="text" placeholder="Enter New Category">
+                <input name="new_category" id="new-cate" type="text" placeholder="Enter New Category">
 
                 <div class="alert alert-profile" style="display: none">
                     <p>This field is required!</p>
@@ -66,7 +93,7 @@
             </div>
 
             <label>Description</label>
-            <textarea id="product-description" placeholder="Enter Description"></textarea>
+            <textarea name="description" id="product-description" placeholder="Enter Description"></textarea>
 
             <div class="alert alert-profile" style="display: none">
                 <p>This field is required!</p>
@@ -77,7 +104,7 @@
             </div>
 
             <label>Price</label>
-            <input id="product-price" type="number" placeholder="Enter Price">
+            <input name="price" id="product-price" type="number" placeholder="Enter Price">
 
             <div class="alert alert-profile" style="display: none">
                 <p>This field is required!</p>
@@ -97,3 +124,7 @@
     <script src="../JavaScript/add_product.js"></script>
 </body>
 </html>
+
+<?php
+    mysqli_close($conn);
+?>

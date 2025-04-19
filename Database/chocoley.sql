@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 16, 2025 at 10:00 AM
+-- Generation Time: Apr 19, 2025 at 11:46 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -63,12 +63,13 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `description`, `price`, `category_id`, `image`) VALUES
+(0, 'Chocolate', 'This is a chocolate', 100.00, 1, 'upload.jpg'),
 (1, 'Dark Chocolate Bar', 'Premium dark chocolate truffles with a creamy center.', 38.45, 1, 'dark_chocolate_bar.jpg'),
 (2, 'Dark Truffles', 'Premium dark chocolate truffles with a creamy center.', 91.20, 5, 'dark_truffles.jpg'),
 (3, 'Milk Chocolate Bar', 'Premium dark chocolate truffles with a creamy center.', 17.60, 2, 'milk_chocolate_bar.jpg'),
 (4, 'Milk Truffles', 'Premium dark chocolate truffles with a creamy center.', 52.30, 5, 'milk_truffles.jpg'),
 (5, 'White Chocolate Bar', 'Premium dark chocolate truffles with a creamy center.', 23.90, 3, 'white_chocolate_bar.jpg'),
-(6, 'White Truffles', 'Premium dark chocolate truffles with a creamy center.', 98.00, 5, 'white_truffles.jpg'),
+(6, 'White Nigga', 'Premium dark chocolate truffles with a creamy center. ahihi', 100.00, 1, 'Dark chocolate.jpg'),
 (7, 'Almond Dark Chocolate', 'Premium dark chocolate truffles with a creamy center.', 19.75, 1, 'almond_dark_chocolate.jpg'),
 (8, 'Hazelnut Milk Chocolate', 'Premium dark chocolate truffles with a creamy center.', 87.10, 2, 'hazelnut_milk_chocolate.jpg'),
 (9, 'Caramel Dark Chocolate', 'Premium dark chocolate truffles with a creamy center.', 45.80, 1, 'caramel_dark_chocolate.jpg'),
@@ -100,6 +101,7 @@ CREATE TABLE `seller` (
 --
 
 INSERT INTO `seller` (`seller_id`, `product_id`) VALUES
+(1, 0),
 (1, 1),
 (1, 2),
 (1, 3),
@@ -137,7 +139,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`user_id`, `email`, `password`, `user_name`, `phone_number`, `gender`, `birth_date`, `profile_image`, `role`) VALUES
 (1, 'seller@example.com', '$2y$10$9fTIjeSmkXhQ1QhtA0H/kupgahKo1VWKeMXnM09LRierq6hB0GOIW', 'Seller One', '1234567890', 'male', '1995-05-15', '67f414890fbd2_crispy_milk_chocolate.jpg', 'seller'),
-(2, 'vinh.trantrung@hcmut.edu.vn', '$2y$10$fYUke.fPOWNol3hFze9tfuHnD4RfgEksj2IUjZU6tXpAYpR.AA.fC', 'lmao', '', '', '0000-00-00', '67f4d1f6f169e_dark_truffles.jpg', 'user'),
+(2, 'vinh.trantrung@hcmut.edu.vn', '$2y$10$fYUke.fPOWNol3hFze9tfuHnD4RfgEksj2IUjZU6tXpAYpR.AA.fC', 'lmao', '0366150204', 'male', '2004-04-23', 'Dark chocolate.jpg', 'user'),
 (3, '', '$2y$10$pMFxQo9NNpLj844bxvfuk.owogvpjNh/4liGy5PcoGdDBHle06KMG', 'ssasasasasasasas', NULL, NULL, NULL, NULL, 'user'),
 (4, 'dsdsds', '$2y$10$3WnmML/5Z4kLw1gheoM.ReHJsA5mp4OMz/lCdv4yG7ho9UGR9/CuS', 'sdsddsdsdsdsdsds', NULL, NULL, NULL, NULL, 'user'),
 (5, 'sdsdsdsd', '$2y$10$NoY.KpeS9jDMHK0x.NHoxeN4Nb3p1sa3SujFvlJppmXKJSeOIIR0y', 'sddsdsdsd', NULL, NULL, NULL, NULL, 'user'),
@@ -151,14 +153,16 @@ INSERT INTO `users` (`user_id`, `email`, `password`, `user_name`, `phone_number`
 -- Indexes for table `categories`
 --
 ALTER TABLE `categories`
-  ADD PRIMARY KEY (`category_id`);
+  ADD PRIMARY KEY (`category_id`),
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `category_id` (`category_id`);
+  ADD KEY `category_id` (`category_id`),
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Indexes for table `seller`
