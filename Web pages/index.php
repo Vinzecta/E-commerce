@@ -4,7 +4,7 @@
     
 
     if (isset($_GET['user'])) {
-        if (in_array($_GET['user'], array('account', 'contact', 'home', 'product_service'))) {
+        if (in_array($_GET['user'], array('account', 'contact', 'home', 'product_service', 'product_detail'))) {
             $page = $_GET['user'];
             include "./User/$page.php";
         } else {

@@ -125,7 +125,7 @@
                                 <p>This field is required!</p>
                             </div>
 
-                            <label>Re-type password</label>
+                            <label>Confirm password</label>
                             <input id="profile-re-password" type="password" class="password" placeholder="Re-type password">
 
                             <div class="alert alert-profile" style="display: none">

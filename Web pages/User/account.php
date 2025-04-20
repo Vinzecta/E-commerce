@@ -125,7 +125,7 @@
                                 <p>This field is required!</p>
                             </div>
 
-                            <label>Re-type password</label>
+                            <label>Confirm</label>
                             <input id="profile-re-password" type="password" class="password" placeholder="Re-type password">
 
                             <div class="alert alert-profile" style="display: none">
@@ -218,12 +218,12 @@
                         <p>Please enter a valid email address!</p>
                     </div>
 
-                    <label for="role">Role</label>
+                    <!-- <label for="role">Role</label>
                     <select name="role">
-                        <option value="user">User</option>
+                        <option value="user">User</option> -->
                         <!-- <option value="admin">Admin</option> -->
-                        <option value="seller">Seller</option>
-                    </select>
+                        <!-- <option value="seller">Seller</option>
+                    </select> -->
 
                     <label for="password">Password</label>
                     <input type="password" id="sign-up-password" name="password" class="password" placeholder="Enter password">
@@ -232,7 +232,7 @@
                         <p>This field is require</p>
                     </div>
 
-                    <label for="retype_password">Re-type password</label>
+                    <label for="retype_password">Confirm</label>
                     <input type="password" id="sign-up-confirm-password" class="password" placeholder="Re-type password">
 
                     <div class="alert alert-form" style="display: none">
@@ -281,7 +281,7 @@
                         <p>This field is required!</p>
                     </div>
 
-                    <label for="retype_password">Re-type password</label>
+                    <label for="retype_password">Confirm</label>
                     <input type="password" id="forgot-retype" class="password" placeholder="Re-type password">
 
                     <div class="alert alert-form" style="display: none">

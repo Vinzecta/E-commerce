@@ -7,7 +7,7 @@
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $email = mysqli_real_escape_string($conn, $_POST['email']);
-        $role = mysqli_real_escape_string($conn, $_POST['role']);
+        $role = 'user';
         $password = mysqli_real_escape_string($conn, $_POST['password']);
         $username = mysqli_real_escape_string($conn, $_POST['username']);
 
