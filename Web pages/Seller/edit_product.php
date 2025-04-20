@@ -57,7 +57,16 @@
                         <input id="file-upload" name="image" type="file" accept=".jpg,.png">
                     </div>
                     <label>Product Name</label>
-                    <input type="text" name="product_name" value="<?php echo $row['name'] ?>">
+                    <input id="product-name" type="text" name="product_name" value="<?php echo $row['name'] ?>">
+
+                    <div class="alert alert-profile" style="display: none">
+                        <p>This field is required!</p>
+                    </div>
+
+                    <div class="alert alert-profile" style="display: none">
+                        <p>Product name must have between 1 - 30 characters!</p>
+                    </div>
+
                     <label>Category</label>
                     <select name="category">
                         <?php
@@ -68,11 +77,27 @@
                         ?>
                     </select>
                     <label>Description</label>
-                    <textarea name="description"><?php echo $row['description'] ?></textarea>
+                    <textarea id="product-description" name="description"><?php echo $row['description'] ?></textarea>
+
+                    <div class="alert alert-profile" style="display: none">
+                        <p>This field is required!</p>
+                    </div>
+
+                    <div class="alert alert-profile" style="display: none">
+                        <p>Description must have between 1 - 200 characters</p>
+                    </div>
 
                     <label>Price</label>
-                    <input type="text" name="price" value="<?php echo $row['price']?>">
-                    <button class="change-profile" type="submit">Save Changes</button>
+                    <input id="product-price" type="number" name="price" step="0.01" min="0" value="<?php echo $row['price']?>">
+
+                    <div class="alert alert-profile" style="display: none">
+                        <p>This field is required!</p>
+                    </div>
+
+                    <div class="alert alert-profile" style="display: none">
+                        <p>Price must not be negative</p>
+                    </div>
+                    <button id="submit-product" class="change-profile" type="submit">Save Changes</button>
                 </form>
 
                 <form method="post" action="../Backend/delete_product.php">
@@ -81,11 +106,13 @@
             </div>     
     </section>
 
+    <script src="../JavaScript/edit_product.js"></script>
+
     <?php
         include "./Components/footer.php";
     ?>
 
-    <script src="../JavaScript/profile.js"></script>
+    <!-- <script src="../JavaScript/profile.js"></script> -->
 </body>
 </html>
 

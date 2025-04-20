@@ -125,7 +125,7 @@
                                 <p>This field is required!</p>
                             </div>
 
-                            <label>Confirm</label>
+                            <label>Confirm password</label>
                             <input id="profile-re-password" type="password" class="password" placeholder="Re-type password">
 
                             <div class="alert alert-profile" style="display: none">
@@ -232,7 +232,7 @@
                         <p>This field is require</p>
                     </div>
 
-                    <label for="retype_password">Confirm</label>
+                    <label for="retype_password">Confirm password</label>
                     <input type="password" id="sign-up-confirm-password" class="password" placeholder="Re-type password">
 
                     <div class="alert alert-form" style="display: none">
@@ -281,7 +281,7 @@
                         <p>This field is required!</p>
                     </div>
 
-                    <label for="retype_password">Confirm</label>
+                    <label for="retype_password">Confirm password</label>
                     <input type="password" id="forgot-retype" class="password" placeholder="Re-type password">
 
                     <div class="alert alert-form" style="display: none">

@@ -11,7 +11,7 @@
                    WHERE email = '$email'";
         mysqli_query($conn, $update);
         header("location: ../Web pages/index.php?user=account");
-        exit;
+        exit();
     }
 
     mysqli_close($conn);

@@ -12,7 +12,8 @@
         if ($delete_stmt) {
             mysqli_stmt_bind_param($delete_stmt,'i', $product_id);
             mysqli_stmt_execute($delete_stmt);
-            echo "OK";
+            header("Location: ../Web pages/index.php?seller=product");
+            exit();
 
             // $delete_seller_product = 'DELETE FROM seller WHERE seller_id = ? AND product_id = ?';
             // $delete_seller_product_stmt = mysqli_prepare($conn, $delete_seller_product);
