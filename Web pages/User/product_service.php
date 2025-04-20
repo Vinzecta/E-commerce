@@ -62,7 +62,7 @@
                                 <p class="category"><b>Category:</b> ' .$row['category_name'].'</p>
                                 <div class="product-price">
                                     <h2 class="price">' .$row['price']. ' USD</h2>
-                                    <a href="index.php?user=product_detail">View</a>
+                                    <a>View</a>
                                 </div>
                             </div>';
                 }

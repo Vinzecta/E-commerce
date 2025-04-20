@@ -1,5 +1,8 @@
 <?php
     include "../Backend/connect_db.php";
+    if (!isset($_SESSION['role']) || $_SESSION['role'] != 'seller') {
+        header('Location: ../Web pages/index.php?user=home');
+    }
 
     $form = isset($_GET['form']) && in_array($_GET['form'], array('log_in', 'sign_up', 'forgot_password'))? $_GET['form'] : 'log_in';
     $display = isset($_GET['account_display']) && in_array($_GET['account_display'], array('profile', 'history', 'reset_password')) ? $_GET['account_display'] : 'profile';

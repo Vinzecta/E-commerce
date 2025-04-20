@@ -1,6 +1,6 @@
 <?php
-    if (isset($_SESSION['role']) && $_SESSION['role'] != 'user') {
-        header('Location: ../Web pages/index.php?seller=home');
+    if (!isset($_SESSION['role']) || $_SESSION['role'] != 'seller') {
+        header('Location: ../Web pages/index.php?user=home');
     }
 ?>
 
@@ -23,7 +23,7 @@
     <section id="not_found">
         <h1>Page Not Found!</h1>
         <p>You may enter the wrong page!</p>
-        <p>Please <span><a href="index.php?user=home">Click here</a></span> to navigate to homepage</p>
+        <p>Please <span><a href="index.php?seller=home">Click here</a></span> to navigate to homepage</p>
     </section>
     <?php
         include "./Components/footer.php";

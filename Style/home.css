@@ -1,8 +1,10 @@
-body {
+body, html {
     font-family: "Josefin Slab", serif;
     margin: 0;
     padding: 0;
     height: 100%;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 #contact_sub_title {
@@ -168,3 +170,5 @@ body {
 .left-slideshow-content p {
     padding-bottom: 20px;
 }
+
+
