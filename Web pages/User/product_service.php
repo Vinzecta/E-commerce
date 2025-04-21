@@ -84,18 +84,46 @@
                 $total_row = mysqli_fetch_assoc($total_query_result);
                 $total_row = $total_row['num_rows'];
                 $total_page = ceil($total_row / $product_per_page);
-                if ($total_page > 6) {
-                    for ($x = $page; $x <= $page + 3; $x++) {
-                        echo '<a class="pagination-number" href="index.php?user=product_service&page_number=' .$x. '&order_name='.$order_name.'&order='.$order.'">'.$x.'</a>';
-                    }
-                    echo '<p class="dots">...</p>';
-                    for ($y = $total_page - 3; $y <= $total_page; $y++) {
-                        echo '<a class="pagination-number" href="index.php?user=product_service&page_number=' .$y. '&order_name='.$order_name.'&order='.$order.'">'.$y.'</a>';
-                    }
-                }
+                $check_page = 1;
+                // if ($total_page > 6 && $page <= $total_page) {
+                //     for ($x = $page; $x < $page + 3; $x++) {
+                //         echo '<a class="pagination-number" href="index.php?user=product_service&page_number=' .$x. '&order_name='.$order_name.'&order='.$order.'">'.$x.'</a>';
+                //     }
+                //     echo '<p class="dots">...</p>';
+                //     for ($y = $total_page + 2; $y <= $total_page; $y++) {
+                //         echo '<a class="pagination-number" href="index.php?user=product_service&page_number=' .$y. '&order_name='.$order_name.'&order='.$order.'">'.$y.'</a>';
+                //     }
+                // } else {
+                //     for ($i = 1; $i <= $total_page; $i++) {
+                //         echo '<a class="pagination-number" href="index.php?user=product_service&page_number=' .$i. '&order_name='.$order_name.'&order='.$order.'">'.$i.'</a>';
+                //     }
+                // }
 
-                for ($i = 1; $i <= $total_page; $i++) {
-                    echo '<a class="pagination-number" href="index.php?user=product_service&page_number=' .$i. '&order_name='.$order_name.'&order='.$order.'">'.$i.'</a>';
+                $range = 2; 
+
+                if ($total_page > 1) {
+                    if ($page >= 1) {
+                        echo '<a class="pagination-number" href="index.php?user=product_service&page_number=1&order_name='.$order_name.'&order='.$order.'">1</a>';
+                    }
+                    if ($page - $range > 2) {
+                        echo '<p class="dots">...</p>';
+                    }
+
+                    for ($i = max(2, $page - $range); $i <= min($total_page - 1, $page + $range); $i++) {
+                        if ($i == $page) {
+                            echo '<span class="pagination-number active">'.$i.'</span>';
+                        } else {
+                            echo '<a class="pagination-number" href="index.php?user=product_service&page_number='.$i.'&order_name='.$order_name.'&order='.$order.'">'.$i.'</a>';
+                        }
+                    }
+
+                    if ($page + $range < $total_page - 1) {
+                        echo '<p class="dots">...</p>';
+                    }
+
+                    if ($page <= $total_page) {
+                        echo '<a class="pagination-number" href="index.php?user=product_service&page_number='.$total_page.'&order_name='.$order_name.'&order='.$order.'">'.$total_page.'</a>';
+                    }
                 }
             ?>
         </div>

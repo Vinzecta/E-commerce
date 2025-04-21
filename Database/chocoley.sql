@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 19, 2025 at 11:46 AM
+-- Generation Time: Apr 20, 2025 at 06:48 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -41,7 +41,19 @@ INSERT INTO `categories` (`category_id`, `name`) VALUES
 (2, 'Milk Chocolate'),
 (3, 'White Chocolate'),
 (4, 'Chocolate Bars'),
-(5, 'Chocolate Truffles');
+(5, 'Chocolate Truffles'),
+(6, 'Very dark chocolate');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `location`
+--
+
+CREATE TABLE `location` (
+  `location_id` int(11) NOT NULL,
+  `location` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -63,13 +75,10 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `description`, `price`, `category_id`, `image`) VALUES
-(0, 'Chocolate', 'This is a chocolate', 100.00, 1, 'upload.jpg'),
-(1, 'Dark Chocolate Bar', 'Premium dark chocolate truffles with a creamy center.', 38.45, 1, 'dark_chocolate_bar.jpg'),
-(2, 'Dark Truffles', 'Premium dark chocolate truffles with a creamy center.', 91.20, 5, 'dark_truffles.jpg'),
+(2, 'Dark Truffles big size', 'This is a very big dark truffle', 100.00, 5, 'dark_truffles.jpg'),
 (3, 'Milk Chocolate Bar', 'Premium dark chocolate truffles with a creamy center.', 17.60, 2, 'milk_chocolate_bar.jpg'),
 (4, 'Milk Truffles', 'Premium dark chocolate truffles with a creamy center.', 52.30, 5, 'milk_truffles.jpg'),
 (5, 'White Chocolate Bar', 'Premium dark chocolate truffles with a creamy center.', 23.90, 3, 'white_chocolate_bar.jpg'),
-(6, 'White Nigga', 'Premium dark chocolate truffles with a creamy center. ahihi', 100.00, 1, 'Dark chocolate.jpg'),
 (7, 'Almond Dark Chocolate', 'Premium dark chocolate truffles with a creamy center.', 19.75, 1, 'almond_dark_chocolate.jpg'),
 (8, 'Hazelnut Milk Chocolate', 'Premium dark chocolate truffles with a creamy center.', 87.10, 2, 'hazelnut_milk_chocolate.jpg'),
 (9, 'Caramel Dark Chocolate', 'Premium dark chocolate truffles with a creamy center.', 45.80, 1, 'caramel_dark_chocolate.jpg'),
@@ -83,7 +92,8 @@ INSERT INTO `products` (`id`, `name`, `description`, `price`, `category_id`, `im
 (17, 'Chocolate Fudge Truffles', 'Premium dark chocolate truffles with a creamy center.', 76.60, 5, 'chocolate_fudge_truffles.jpg'),
 (18, 'Coffee Dark Chocolate', 'Premium dark chocolate truffles with a creamy center.', 61.50, 1, 'coffee_dark_chocolate.jpg'),
 (19, 'Pistachio Milk Chocolate', 'Premium dark chocolate truffles with a creamy center.', 28.00, 2, 'pistachio_milk_chocolate.jpg'),
-(20, 'Hazelnut Truffles', 'Premium dark chocolate truffles with a creamy center.', 34.60, 5, 'hazelnut_truffles.jpg');
+(20, 'Hazelnut Truffles', 'Premium dark chocolate truffles with a creamy center.', 34.60, 5, 'hazelnut_truffles.jpg'),
+(25, 'Haizen Chocolate', 'This is a Haizen Chocolate', 200.00, 4, 'hazelnut_milk_chocolate.jpg');
 
 -- --------------------------------------------------------
 
@@ -101,19 +111,15 @@ CREATE TABLE `seller` (
 --
 
 INSERT INTO `seller` (`seller_id`, `product_id`) VALUES
-(1, 0),
-(1, 1),
 (1, 2),
 (1, 3),
 (1, 4),
 (1, 5),
-(1, 6),
-(2, 1),
+(1, 25),
 (2, 2),
 (2, 3),
 (2, 4),
-(2, 5),
-(2, 6);
+(2, 5);
 
 -- --------------------------------------------------------
 
@@ -140,10 +146,9 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`user_id`, `email`, `password`, `user_name`, `phone_number`, `gender`, `birth_date`, `profile_image`, `role`) VALUES
 (1, 'seller@example.com', '$2y$10$9fTIjeSmkXhQ1QhtA0H/kupgahKo1VWKeMXnM09LRierq6hB0GOIW', 'Seller One', '1234567890', 'male', '1995-05-15', '67f414890fbd2_crispy_milk_chocolate.jpg', 'seller'),
 (2, 'vinh.trantrung@hcmut.edu.vn', '$2y$10$fYUke.fPOWNol3hFze9tfuHnD4RfgEksj2IUjZU6tXpAYpR.AA.fC', 'lmao', '0366150204', 'male', '2004-04-23', 'Dark chocolate.jpg', 'user'),
-(3, '', '$2y$10$pMFxQo9NNpLj844bxvfuk.owogvpjNh/4liGy5PcoGdDBHle06KMG', 'ssasasasasasasas', NULL, NULL, NULL, NULL, 'user'),
-(4, 'dsdsds', '$2y$10$3WnmML/5Z4kLw1gheoM.ReHJsA5mp4OMz/lCdv4yG7ho9UGR9/CuS', 'sdsddsdsdsdsdsds', NULL, NULL, NULL, NULL, 'user'),
-(5, 'sdsdsdsd', '$2y$10$NoY.KpeS9jDMHK0x.NHoxeN4Nb3p1sa3SujFvlJppmXKJSeOIIR0y', 'sddsdsdsd', NULL, NULL, NULL, NULL, 'user'),
-(6, 'ahihi@gmail.com', '$2y$10$uyztQf61iduekcGAN08glueXGwl5CGOQnzlmBQObJJeHDrYD5t3mW', 'lmao', NULL, NULL, NULL, NULL, 'seller');
+(6, 'ahihi@gmail.com', '$2y$10$uyztQf61iduekcGAN08glueXGwl5CGOQnzlmBQObJJeHDrYD5t3mW', 'lmao', NULL, NULL, NULL, NULL, 'seller'),
+(7, 'holishit@gmail.com', '$2y$10$Dd13.MLtyxEXNosVACfMj.JwiguCo2xhWcdYKD3rVBiclVhLH.JaC', 'lmao', NULL, NULL, NULL, NULL, 'user'),
+(8, 'user@gmail.com', '$2y$10$8kvdcG2yynhYFUgbC.02N.ZN36FeEBvQEzq/WJR9SDkD8nulcJp5G', 'abc', NULL, NULL, NULL, NULL, 'user');
 
 --
 -- Indexes for dumped tables
@@ -153,16 +158,20 @@ INSERT INTO `users` (`user_id`, `email`, `password`, `user_name`, `phone_number`
 -- Indexes for table `categories`
 --
 ALTER TABLE `categories`
-  ADD PRIMARY KEY (`category_id`),
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT;
+  ADD PRIMARY KEY (`category_id`);
+
+--
+-- Indexes for table `location`
+--
+ALTER TABLE `location`
+  ADD PRIMARY KEY (`location_id`);
 
 --
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `category_id` (`category_id`),
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  ADD KEY `category_id` (`category_id`);
 
 --
 -- Indexes for table `seller`
@@ -183,10 +192,22 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables

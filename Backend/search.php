@@ -13,7 +13,7 @@
         $query = "SELECT s.seller_id, s.product_id, p.name, p.description, p.price, p.image, c.name AS category_name
                 FROM seller s JOIN products p ON s.product_id = p.id JOIN categories c ON p.category_id = c.category_id 
                 WHERE (p.name LIKE '{$input}%' OR p.description LIKE '{$input}%' OR c.name LIKE '{$input}%')
-                AND s.seller_id = $user_id ORDER BY p.$order_sql LIMIT $product_per_page OFFSET $offset";
+                AND s.seller_id = $user_id";
         $result = mysqli_query($conn, $query);
         if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)) {
@@ -36,8 +36,7 @@
     } else {
         $query = "SELECT p.name, p.description, p.price, p.image, c.name AS category_name
                 FROM products p JOIN categories c ON p.category_id = c.category_id 
-                WHERE (p.name LIKE '{$input}%' OR p.description LIKE '{$input}%' OR c.name LIKE '{$input}%')
-                ORDER BY p.$order_sql LIMIT $product_per_page OFFSET $offset";
+                WHERE (p.name LIKE '{$input}%' OR p.description LIKE '{$input}%' OR c.name LIKE '{$input}%')";
         $result = mysqli_query($conn, $query);
         if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)) {
